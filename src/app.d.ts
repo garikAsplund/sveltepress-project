@@ -13,11 +13,23 @@ declare namespace App {
 	// interface Platform {}
 }
 
-declare module 'flubber';
 declare module 'svelte-motion' {
-	import type { SvelteComponentTyped } from 'svelte';
+	import type { ComponentType, SvelteComponentTyped } from 'svelte';
 	
-	export class Motion extends SvelteComponentTyped<{
-	  // Add appropriate props here
-	}> {}
+	// Define the constructor type, not the instance type
+	export const Motion: ComponentType<any>;
+	
+	// For the SVG namespace
+	export const M: {
+	  path: ComponentType<any>;
+	  circle: ComponentType<any>;
+	  rect: ComponentType<any>;
+	  [key: string]: ComponentType<any>;
+	};
+  
+	// Action type for use:motion
+	export const motion: (node: Element, params?: any) => {
+	  update?: (params: any) => void;
+	  destroy?: () => void;
+	};
   }

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CNCF_logo_white from '$lib/svgs/CNCF_logo_white.svelte';
+  import Slack from '$lib/svgs/Slack.svelte';
 </script>
 
 <footer
@@ -26,7 +27,7 @@
 			</div>
 
 			<div class="flex flex-col items-center gap-4 md:items-end">
-				<div class="flex items-center gap-6">
+				<div class="flex items-end gap-6 h-24">
 					<a
 						href="https://github.com/your-repo"
 						target="_blank"
@@ -46,13 +47,13 @@
 						<!-- <Twitter size={20} /> -->
 					</a>
 					<a
-						href="https://slack.your-community.com"
+						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-white/80 transition-colors duration-200 hover:text-white"
+						class="text-white/80 transition-all duration-200 hover:opacity-85"
 						aria-label="Join our Slack"
 					>
-						<!-- <Slack size={20} /> -->
+						<Slack />
 					</a>
 				</div>
 			</div>

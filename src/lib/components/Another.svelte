@@ -1,25 +1,44 @@
 <script>
   import SimpleCardVariant2 from "./UI/SimpleCardVariant2.svelte";
-  import FlickeringGrid from "./UI/FlickeringGrid.svelte";
-  import BlurInText from "./UI/BlurIn.svelte";
+  
+
+  const features = [
+    {
+      title: "Ultra-Fast VM Creation",
+      description:
+        "Create new micro-VMs in just 1-2 milliseconds, about 100x faster than traditional hypervisor approaches, making it practical to spin up VMs on-demand for individual function calls.",
+    },
+    {
+      title: "Hypervisor-Level Security",
+      description:
+        "Execute untrusted code with real hypervisor-based protection for each function call, providing stronger isolation than sandboxed runtimes while maintaining exceptional performance.",
+    },
+    {
+      title: "Minimal Resource Footprint",
+      description:
+        "Extremely lightweight with just 64KB stack and 128KB default heap size per micro-VM, enabling true scale-to-zero capabilities and efficient resource utilization.",
+    },
+    {
+      title: "Portable Abstraction Layer",
+      description:
+        "Run on multiple hypervisors (Hyper-V, mshv, KVM) across different platforms without changing your code, providing flexibility while maintaining consistent security benefits.",
+    },
+  ];
 </script>
 
-<BlurInText
-  word="Svelte is Vibe"
-  class="text-4xl font-bold text-black dark:text-white"
-/>
-<SimpleCardVariant2 />
-<div
-  class="relative h-64 md:h-[400px] rounded-lg w-full md:w-[60%] mx-auto bg-background overflow-hidden border"
->
-  <FlickeringGrid
-    class="z-0 absolute inset-0 size-full"
-    squareSize={2}
-    gridGap={6}
-    color="#6B7280"
-    maxOpacity={0.8}
-    flickerChance={0.21}
-    width={630}
-    height={400}
-  />
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-3xl font-bold text-center mb-8">
+    Why You'll Love Hyperlight
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {#each features as feature}
+      <SimpleCardVariant2
+        title={feature.title}
+        description={feature.description}
+      />
+    {/each}
+  </div>
 </div>
+
+

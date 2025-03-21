@@ -164,5 +164,5 @@
     bind:this={canvas}
     class="size-full pointer-events-none {className}"
     style="width: {width || '100%'}; height: {height || '100%'};"
-  />
+  ></canvas>
   

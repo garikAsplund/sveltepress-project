@@ -1,96 +1,102 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
+  import { spring } from "svelte/motion";
   import Container from "$lib/svgs/Container.svelte";
   import Sandbox from "$lib/svgs/Sandbox.svelte";
   import Vm from "$lib/svgs/Vm.svelte";
-  import { animate } from "motion/mini";
-  import { backIn, backOut } from "motion";
-
-  // State to track which visualization is active
-  let currentView = $state(0);
-  const totalViews = 3;
-
-  // References to SVG elements
-  let vmElement: HTMLElement;
-  let containerElement: HTMLElement;
-  let sandboxElement: HTMLElement;
-
-  // Animation timeout references
-  let timeoutId: number;
-
-  // Animation function with smoother crossfade
-  function animateTransition(from: number, to: number) {
-    const elements = [vmElement, containerElement, sandboxElement];
-
-    // Create smoother crossfade by slightly overlapping animations
-    // Fade out current view
-    animate(
-      elements[from],
-      { opacity: 0 },
-      {
-        duration: 1.3,
-        easing: backOut, // Ease-in-out cubic bezier for smoother feel
-      }
-    );
-
-    // Simultaneously fade in next view with slight delay
-    animate(
-      elements[to],
-      { opacity: 1 },
-      {
-        duration: 1.3,
-        easing: backIn, // Custom easing for smooth entrance
-        delay: 1, // Slight delay for better crossfade effect
-      }
-    );
-  }
-
-  // Function to advance to the next view
-  function nextView() {
-    if (currentView < totalViews - 1) {
-      const prevView = currentView;
-      currentView++;
-      animateTransition(prevView, currentView);
-
-      // If not at the last view, schedule the next transition
-      if (currentView < totalViews - 1) {
-        timeoutId = setTimeout(nextView, 3000);
-      }
-    }
-  }
-
+  import Line from "./UI/Line.svelte";
+  
+  // Simple data for the three cards
+  const cards = [
+    { component: Vm, title: "Virtual Machines" },
+    { component: Container, title: "Containers" },
+    { component: Sandbox, title: "Sandboxes" }
+  ];
+  
+  // References to card elements
+  let cardsContainer: HTMLElement;
+  
+  // Animation states for each card (using separate variables for Svelte 5)
+  let card0Y = $state(40);
+  let card0Opacity = $state(0);
+  
+  let card1Y = $state(40);
+  let card1Opacity = $state(0);
+  
+  let card2Y = $state(40);
+  let card2Opacity = $state(0);
+  
+  // Setup intersection observer on mount
   onMount(() => {
-    // Set initial visibility
-    const elements = [vmElement, containerElement, sandboxElement];
-
-    elements.forEach((el, index) => {
-      el.style.opacity = index === 0 ? "1" : "0";
-    });
-
-    // Start the sequence after a short delay
-    timeoutId = setTimeout(nextView, 1000);
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // Trigger animations with staggered timing when container comes into view
+        setTimeout(() => {
+          card0Y = 0;
+          card0Opacity = 1;
+        }, 0);
+        
+        setTimeout(() => {
+          card1Y = 0;
+          card1Opacity = 1;
+        }, 150);
+        
+        setTimeout(() => {
+          card2Y = 0;
+          card2Opacity = 1;
+        }, 300);
+        
+        // Disconnect observer once triggered
+        observer.disconnect();
+      }
+    }, { threshold: 0.6 }); // Trigger when 20% visible
+    
+    if (cardsContainer) {
+      observer.observe(cardsContainer);
+    }
+    
+    return () => observer.disconnect();
   });
-
-  onDestroy(() => {
-    // Clean up timeout when component is destroyed
-    clearTimeout(timeoutId);
-  });
+  
+  // Helper function to get styles for each card
+  function getCardStyle(index: number) {
+    if (index === 0) {
+      return `opacity: ${card0Opacity}; transform: translateY(${card0Y}px);`;
+    } else if (index === 1) {
+      return `opacity: ${card1Opacity}; transform: translateY(${card1Y}px);`;
+    } else if (index === 2) {
+      return `opacity: ${card2Opacity}; transform: translateY(${card2Y}px);`;
+    }
+    return '';
+  }
 </script>
 
-<div class="relative w-full text-white/80 h-[60vh]">
-  <!-- SVG components with animation -->
-  <div class="absolute inset-0 w-fit" bind:this={vmElement}>
-    <Vm />
-    <p class="text-center w-full">From virtual machines</p>
-  </div>
+<Line />
 
-  <div class="absolute inset-0 w-fit" bind:this={containerElement}>
-    <Container />
-    <p class="text-center w-full">To containers</p>
-  </div>
+<div class="flex justify-center">
+  <h1 class="text-4xl text-white font-bold">Welcome to the Cloud Platform</h1>
+</div>
 
-  <div class="absolute inset-0 w-fit" bind:this={sandboxElement}>
-    <Sandbox />
-    <p class="text-center w-full">And now sandboxes</p>
+<div class="w-full bg-slate-900">
+  <!-- Simple grid of cards -->
+  <div bind:this={cardsContainer} class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+    {#each cards as { component: Component, title }, index}
+      <div 
+        class="bg-slate-800 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-700"
+        style={getCardStyle(index)}
+      >
+        <div class="text-purple-500 w-32 h-32 flex items-center justify-center">
+          <Component />
+        </div>
+        <h2 class="text-white mt-4 text-xl font-medium">{title}</h2>
+      </div>
+    {/each}
   </div>
 </div>
+
+<style>
+  /* Add spring-like transition for the bouncy effect */
+  .transition-all {
+    transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+</style>
