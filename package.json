@@ -1,0 +1,40 @@
+{
+  "name": "sveltepress-project",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.1",
+    "@sveltejs/kit": "^2.8.1",
+    "@sveltejs/vite-plugin-svelte": "^4.0.1",
+    "@sveltepress/theme-default": "^6.0.0",
+    "@sveltepress/vite": "^1.2.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.14",
+    "@types/node": "^20.11.20",
+    "svelte": "^5.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "@number-flow/svelte": "^0.3.5",
+    "clsx": "^2.1.1",
+    "flubber": "^0.4.2",
+    "lucide-svelte": "^0.483.0",
+    "motion": "^12.5.0",
+    "svelte-motion": "^0.12.2",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^4.0.14"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@sveltepress/theme-default": "patches/@sveltepress__theme-default.patch"
+    }
+  }
+}

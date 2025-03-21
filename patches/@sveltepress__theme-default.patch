@@ -1,0 +1,313 @@
+diff --git a/dist/components/GlobalLayout.svelte b/dist/components/GlobalLayout.svelte
+index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..f09b6bb7807e095b682985ef75be249c927fd5b7 100644
+--- a/dist/components/GlobalLayout.svelte
++++ b/dist/components/GlobalLayout.svelte
+@@ -108,7 +108,7 @@
+     --at-apply: 'scroll-smooth';
+   }
+   :global(body) {
+-    --at-apply: 'bg-light-4 dark:bg-zinc-9 text-[#213547] dark:text-warm-gray-2 scroll-smooth';
++    --at-apply: 'bg-light-4 dark:bg-zinc-9 text-[#213547] dark:text-warm-gray-2 scroll-smooth m-0 p-0';
+     font-family:
+       'Inter var experimental',
+       'Inter var',
+diff --git a/dist/components/Navbar.svelte b/dist/components/Navbar.svelte
+index dd7db439070a656c38940aab34484a969139e1d2..90ea0db2413e8dda1d5052196455e13564cf9c3e 100644
+--- a/dist/components/Navbar.svelte
++++ b/dist/components/Navbar.svelte
+@@ -78,7 +78,7 @@
+ <style>
+   .header {
+     --at-apply: 'transition-transform fixed top-0 left-0 right-0 sm:h-[73px] z-888 dark:bg-opacity-40';
+-    backdrop-filter: blur(5px);
++    backdrop-filter: blur(15px);
+   }
+   .hidden-in-mobile {
+     --at-apply: 'translate-y-[-100%] sm:translate-y-0';
+diff --git a/dist/components/PageLayout.svelte b/dist/components/PageLayout.svelte
+index cca43bac6be4866cd0b34998e073a6584e015ba9..d0e804b4f335c8f7ce6c3cc93afb0d447712adef 100644
+--- a/dist/components/PageLayout.svelte
++++ b/dist/components/PageLayout.svelte
+@@ -106,7 +106,7 @@
+     --at-apply: 'relative';
+   }
+   :global(.theme-default--page-layout h2) {
+-    --at-apply: 'border-t-solid border-t border-light-7 dark:border-gray-7 pt-4 mt-8 mb-4';
++    --at-apply: '';
+   }
+   :global(.theme-default--page-layout h1:hover .svp-title-anchor),
+   :global(.theme-default--page-layout h2:hover .svp-title-anchor),
+diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
+index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..b863b8af3bd4c25bebd26f3f4719dd5bb7982599 100644
+--- a/dist/components/ToggleDark.svelte
++++ b/dist/components/ToggleDark.svelte
+@@ -1,77 +1,87 @@
+ <script>
+-  import { onMount, tick } from 'svelte'
+-  import themeOptions from 'virtual:sveltepress/theme-default'
+-  import Moon from './icons/Moon.svelte'
+-  import Sun from './icons/Sun.svelte'
+-  import { isDark } from './layout'
++  import { onMount, tick } from "svelte";
++  import themeOptions from "virtual:sveltepress/theme-default";
++  import Moon from "./icons/Moon.svelte";
++  import Sun from "./icons/Sun.svelte";
++  import { isDark } from "./layout";
++  import { page } from "$app/stores";
+ 
+-  const key = 'SVELTEPRESS_DARK_MODE'
++  const key = "SVELTEPRESS_DARK_MODE";
+ 
+-  const themeColor = themeOptions.themeColor || { light: '#fff', dark: '#000' }
++  const themeColor = themeOptions.themeColor || { light: "#fff", dark: "#000" };
+   function addOrRemoveClass() {
+     if ($isDark) {
+-      document.querySelector('html').classList.add('dark')
++      document.querySelector("html").classList.add("dark");
+       if (themeColor) {
+         document
+-          .getElementById('theme-color')
+-          .setAttribute('content', themeColor.dark)
++          .getElementById("theme-color")
++          .setAttribute("content", themeColor.dark);
+       }
+     } else {
+-      document.querySelector('html').classList.remove('dark')
++      document.querySelector("html").classList.remove("dark");
+       if (themeColor) {
+         document
+-          .getElementById('theme-color')
+-          .setAttribute('content', themeColor.light)
++          .getElementById("theme-color")
++          .setAttribute("content", themeColor.light);
+       }
+     }
+   }
+ 
+   function toggle(evt) {
+-    localStorage.setItem(key, $isDark ? 'off' : 'on')
++    localStorage.setItem(key, $isDark ? "off" : "on");
+     const isAppearanceTransition =
+       document.startViewTransition &&
+-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
++      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ 
+     if (!isAppearanceTransition) {
+-      $isDark = !$isDark
+-      addOrRemoveClass()
+-      return
++      $isDark = !$isDark;
++      addOrRemoveClass();
++      return;
+     }
+ 
+-    const x = evt.clientX
+-    const y = evt.clientY
++    const x = evt.clientX;
++    const y = evt.clientY;
+     const endRadius = Math.hypot(
+       Math.max(x, window.innerWidth - x),
+-      Math.max(y, window.innerHeight - y),
+-    )
++      Math.max(y, window.innerHeight - y)
++    );
+     const transition = document.startViewTransition(async () => {
+-      $isDark = !$isDark
+-      await tick()
+-      addOrRemoveClass()
+-    })
++      $isDark = !$isDark;
++      await tick();
++      addOrRemoveClass();
++    });
+     transition.ready.then(() => {
+       const clipPath = [
+         `circle(0px at ${x}px ${y}px)`,
+         `circle(${endRadius}px at ${x}px ${y}px)`,
+-      ]
++      ];
+       document.documentElement.animate(
+         {
+           clipPath: $isDark ? [...clipPath].reverse() : clipPath,
+         },
+         {
+           duration: 400,
+-          easing: $isDark ? 'ease-out' : 'ease-in',
++          easing: $isDark ? "ease-out" : "ease-in",
+           pseudoElement: $isDark
+-            ? '::view-transition-old(root)'
+-            : '::view-transition-new(root)',
+-        },
+-      )
+-    })
++            ? "::view-transition-old(root)"
++            : "::view-transition-new(root)",
++        }
++      );
++    });
+   }
+   onMount(() => {
+-    $isDark = localStorage.getItem(key) === 'on'
+-    addOrRemoveClass()
+-  })
++    $isDark = localStorage.getItem(key) === "on";
++    addOrRemoveClass();
++  });
++  $effect(() => {
++    const isHomePage = $page.url.pathname === "/";
++    
++    if (isHomePage) {
++      $isDark = true;
++      localStorage.setItem(key, "on");
++      addOrRemoveClass();
++    }
++  });
+ </script>
+ 
+ <!-- eslint-disable no-template-curly-in-string -->
+@@ -80,11 +90,11 @@
+   <meta
+     id="theme-color"
+     name="theme-color"
+-    content={themeColor.light || '#fff'}
++    content={themeColor.light || "#fff"}
+   />
+   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+   {@html `
+-<${'script'}>
++<${"script"}>
+   const themeColor = JSON.parse('${JSON.stringify(themeColor)}')
+   if (window.localStorage.getItem('${key}') === 'on') {
+     document.querySelector('html').classList.add('dark')
+@@ -94,26 +104,28 @@
+     document.querySelector('html').classList.remove('dark')
+     document.getElementById('theme-color').setAttribute('content', themeColor ? themeColor.light : '#ffffff')
+   }
+-</${'script'}>`}
++</${"script"}>`}
+ </svelte:head>
+-
+-<div
+-  class="toggle"
+-  onclick={toggle}
+-  onkeyup={toggle}
+-  aria-label="Toggle dark mode"
+-  role="button"
+-  tabindex="0"
+->
+-  {#if $isDark}
+-    <Moon />
+-  {:else}
+-    <Sun />
+-  {/if}
+-</div>
++<!-- {#if $page.url.pathname !== "/"} -->
++  <div
++    class="toggle"
++    onclick={toggle}
++    onkeyup={toggle}
++    aria-label="Toggle dark mode"
++    role="button"
++    tabindex="0"
++    class:invisible={$page.url.pathname === "/"}
++  >
++    {#if $isDark}
++      <Moon />
++    {:else}
++      <Sun />
++    {/if}
++  </div>
++<!-- {/if} -->
+ 
+ <style>
+   .toggle {
+-    --at-apply: 'h-[28px] text-[24px] cursor-pointer px-3 flex items-center h-100% hover:opacity-80 relative';
++    --at-apply: "h-[28px] text-[24px] cursor-pointer px-3 flex items-center h-100% hover:opacity-80 relative";
+   }
+ </style>
+diff --git a/dist/style.css b/dist/style.css
+index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..b2129c25fd25349e8b3a4af98452509656f85bee 100644
+--- a/dist/style.css
++++ b/dist/style.css
+@@ -2,7 +2,7 @@
+   --svp-expansion-bg: #f8f8fb;
+   --svp-expansion-bg-darker: #f2f2f7;
+   --svp-expansion-bg-darker2: #e8e8f2;
+-  --docsearch-primary-color: rgba(251, 113, 133, 1);
++  --docsearch-primary-color: rgb(246, 113, 251);
+   --svp-code-font: 'Dank Mono', Consolas, 'Courier New', Courier, monospace;
+   --docsearch-searchbox-background: transparent;
+   --docsearch-logo-color: var(--docsearch-primary-color);
+diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
+index 41367a0c981398e30f2a47bd5d13551acc6704a0..5687a05f3e7b68000a061eac158f6c580db096c0 100644
+--- a/dist/vite-plugins/create-pre-core-plugins.js
++++ b/dist/vite-plugins/create-pre-core-plugins.js
+@@ -49,10 +49,11 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+ import Unocss from 'unocss/vite';
+ import { SERVICE_WORKER_PATH } from '../constants.js';
+ import { initHighlighter } from '../markdown/highlighter.js';
++// import presetWind3 from '@unocss/preset-wind3'
+ var THEME_OPTIONS_MODULE = 'virtual:sveltepress/theme-default';
+ var DEFAULT_GRADIENT = {
+-    start: '#fa709a',
+-    end: '#fee140',
++    start: '#D8B4FE',
++    end: '#818CF8',
+ };
+ var DEFAULT_PRIMARY = '#fb7185';
+ var DEFAULT_HOVER = '#f43f5e';
+@@ -92,6 +93,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+                         presets: [
+                             presetUno(),
+                             presetIcons(),
++                            // presetWind3(),
+                         ],
+                         transformers: [transformerDirectives()],
+                         theme: {
+diff --git a/package.json b/package.json
+index f49f8de4032e8d0cb587f3569c13485800ea2c50..33f9ec704edd607477bb0230e1b0450833af8ab5 100644
+--- a/package.json
++++ b/package.json
+@@ -55,15 +55,16 @@
+   "peerDependencies": {
+     "@sveltejs/kit": "^2.0.0",
+     "@sveltejs/vite-plugin-svelte": "^4.0.0",
++    "@sveltepress/vite": "1.2.0",
+     "svelte": "^5.0.0",
+-    "vite": "^5.0.0",
+-    "@sveltepress/vite": "1.2.0"
++    "vite": "^5.0.0"
+   },
+   "dependencies": {
+     "@docsearch/css": "^3.5.2",
+     "@docsearch/js": "^3.5.2",
+     "@shikijs/twoslash": "^1.24.0",
+     "@sveltejs/vite-plugin-svelte": "^4.0.1",
++    "@sveltepress/twoslash": "1.2.0",
+     "@unocss/extractor-svelte": "^0.61.5",
+     "@vite-pwa/sveltekit": "^0.6.6",
+     "lru-cache": "^10.2.0",
+@@ -74,18 +75,19 @@
+     "unist-util-visit": "^5.0.0",
+     "unocss": "^0.61.5",
+     "workbox-precaching": "^7.0.0",
+-    "workbox-routing": "^7.0.0",
+-    "@sveltepress/twoslash": "1.2.0"
++    "workbox-routing": "^7.0.0"
+   },
+   "devDependencies": {
+     "@sveltejs/kit": "^2.8.5",
+     "@sveltejs/package": "^2.3.7",
++    "@sveltepress/vite": "1.2.0",
+     "@types/node": "^20.11.20",
++    "@unocss/preset-wind3": "66.1.0-beta.6",
++    "@unocss/preset-wind4": "66.1.0-beta.6",
+     "svelte": "^5.0.0",
+     "unified": "^11.0.4",
+     "vite": "^5.1.4",
+-    "vitest": "^3.0.2",
+-    "@sveltepress/vite": "1.2.0"
++    "vitest": "^3.0.2"
+   },
+   "scripts": {
+     "test": "vitest",

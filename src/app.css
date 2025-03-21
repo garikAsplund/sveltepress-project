@@ -1,0 +1,8 @@
+/* @import "tailwindcss"; */
+/* @plugin "@tailwindcss/typography"; */
+
+.major-mono-display-regular {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
