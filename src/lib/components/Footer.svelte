@@ -1,15 +1,15 @@
 <script lang="ts">
 	import CNCF_logo_white from '$lib/svgs/CNCF_logo_white.svelte';
-  import Slack from '$lib/svgs/Slack.svelte';
+	import Slack from '$lib/svgs/Slack.svelte';
 </script>
 
 <footer
 	class="bottom-0 mt-auto flex w-full flex-col justify-end bg-gradient-to-b from-transparent to-purple-600/30 backdrop-blur-sm"
 >
-	<div class="container mx-auto px-4">
+	<div class="container mx-auto px-4 box-border" style="max-width: 100vw;">
 		<div class="flex flex-col items-center justify-between gap-8 pt-12 md:flex-row">
-			<div class="flex flex-col items-center gap-8 md:items-start md:gap-4">
-				<p class="text-center text-sm font-medium text-white/90">
+			<div class="flex flex-col items-center gap-8 md:items-start md:gap-4 max-w-full">
+				<p class="text-center text-sm font-medium text-white/90 " style="word-break: break-word; max-width: 100%;">
 					We are a <span class="font-semibold text-white">Cloud Native Computing Foundation</span> sandbox
 					project.
 				</p>
@@ -26,26 +26,10 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col items-center gap-4 md:items-end">
-				<div class="flex items-end gap-6 h-24">
-					<a
-						href="https://github.com/your-repo"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-white/80 transition-colors duration-200 hover:text-white"
-						aria-label="GitHub Repository"
-					>
-						<!-- <Github size={20} /> -->
-					</a>
-					<a
-						href="https://twitter.com/your-handle"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-white/80 transition-colors duration-200 hover:text-white"
-						aria-label="Twitter Profile"
-					>
-						<!-- <Twitter size={20} /> -->
-					</a>
+			<div class="flex flex-col items-center gap-4 md:items-end w-full md:w-auto">
+				<!-- Modified this section for better mobile alignment -->
+				<div class="flex items-center justify-center h-12 gap-6 mb-4">
+					
 					<a
 						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
 						target="_blank"

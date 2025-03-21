@@ -18,6 +18,7 @@ declare module 'svelte-motion' {
 	
 	// Define the constructor type, not the instance type
 	export const Motion: ComponentType<any>;
+	export const AnimatePresence: ComponentType<any>;
 	
 	// For the SVG namespace
 	export const M: {

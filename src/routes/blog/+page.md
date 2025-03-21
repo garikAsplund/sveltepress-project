@@ -22,7 +22,7 @@ Here is my content
 
 Yay
 
-```
+```js
 some code 
 let i = <3 N00dl3
 ```

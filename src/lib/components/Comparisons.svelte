@@ -1,39 +1,27 @@
 <script>
   import DotPattern from "./UI/DotPattern.svelte";
+  import YouTubeTalk from "./YouTubeTalk.svelte";
 </script>
 
 <section class="w-full flex flex-col items-center">
-  <!-- <div
-    class="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden rounded-lg border bg-background p-20 md:shadow-xl"
-  >
-    <p
-      class="z-10 whitespace-pre-wrap text-center text-5xl font-medium text-black dark:text-white"
-    >
-      What sets us apart
-    </p>
-    <DotPattern
-      class="[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
-    />
-  </div> -->
-
   <div
-    class="relative flex h-full w-full items-start justify-center overflow-hidden border bg-background md:shadow-xl"
+    class="relative flex h-48 w-full items-end justify-center overflow-hidden border bg-background md:shadow-xl "
   >
     <p
-      class="z-10 whitespace-pre-wrap text-center text-5xl font-medium text-black dark:text-white"
+      class="z-10 whitespace-pre-wrap text-center text-4xl font-medium text-black dark:text-white"
     >
-      Speed <i>and</i> Security
+      Serverless functions with speed <i>and</i> security
     </p>
     <DotPattern
-    class="[mask-image:linear-gradient(white,transparent)]"
-    width="3"
-     height="3"
-     x={1}
-     y={1}
-     cy={2}
-     cr={.57}
-     cx={2}
-     
+      class="[mask-image:linear-gradient(white,transparent)]"
+      width="3"
+      height="3"
+      x={1}
+      y={1}
+      cy={2}
+      cr={0.75}
+      cx={2}
     />
   </div>
+  <YouTubeTalk />
 </section>

@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@sveltepress/theme-default':
-    hash: y3egxgva4h4coevvn7xbfihis4
+    hash: wcymn5anmx26dofonvhrcmop64
     path: patches/@sveltepress__theme-default.patch
 
 importers:
@@ -22,6 +22,9 @@ importers:
       flubber:
         specifier: ^0.4.2
         version: 0.4.2
+      lite-youtube-embed:
+        specifier: ^0.3.3
+        version: 0.3.3
       lucide-svelte:
         specifier: ^0.483.0
         version: 0.483.0(svelte@5.23.2)
@@ -52,7 +55,7 @@ importers:
         version: 4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0))
       '@sveltepress/theme-default':
         specifier: ^6.0.0
-        version: 6.0.0(patch_hash=y3egxgva4h4coevvn7xbfihis4)(nko26t7adkgqa6cm2smvsx6gxa)
+        version: 6.0.0(patch_hash=wcymn5anmx26dofonvhrcmop64)(nko26t7adkgqa6cm2smvsx6gxa)
       '@sveltepress/vite':
         specifier: ^1.2.0
         version: 1.2.0(@sveltejs/kit@2.20.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(rollup@2.79.2)(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0))
@@ -2530,6 +2533,9 @@ packages:
     resolution: {integrity: sha512-6b6gd/RUXKaw5keVdSEtqFVdzWnU5jMxTUjA2bVcMNPLwSQ08Sv/UodBVtETLCn7k4S1Ibxwh7k68IwLZPgKaA==}
     engines: {node: '>= 12.0.0'}
 
+  lite-youtube-embed@0.3.3:
+    resolution: {integrity: sha512-gFfVVnj6NRjxVfJKo3qoLtpi0v5mn3AcR4eKD45wrxQuxzveFJUb+7Cr6uV6n+DjO8X3p0UzPPquhGt0H/y+NA==}
+
   load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -4852,7 +4858,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltepress/theme-default@6.0.0(patch_hash=y3egxgva4h4coevvn7xbfihis4)(nko26t7adkgqa6cm2smvsx6gxa)':
+  '@sveltepress/theme-default@6.0.0(patch_hash=wcymn5anmx26dofonvhrcmop64)(nko26t7adkgqa6cm2smvsx6gxa)':
     dependencies:
       '@docsearch/css': 3.9.0
       '@docsearch/js': 3.9.0(@algolia/client-search@5.21.0)(@types/react@18.3.19)(search-insights@2.17.3)
@@ -6174,6 +6180,8 @@ snapshots:
       lightningcss-linux-x64-musl: 1.29.2
       lightningcss-win32-arm64-msvc: 1.29.2
       lightningcss-win32-x64-msvc: 1.29.2
+
+  lite-youtube-embed@0.3.3: {}
 
   load-tsconfig@0.2.5: {}
 

@@ -6,19 +6,19 @@
 
 <script>
   import Footer from "$lib/components/Footer.svelte";
-  import Evolution from "$lib/components/Evolution2.svelte";
+  import Evolution from "$lib/components/Evolution.svelte";
   import Comparisons from "$lib/components/Comparisons.svelte";
-  import Another from "$lib/components/Another.svelte";
+  import Fold from "$lib/components/Fold.svelte";
   import Hero from "$lib/components/Hero.svelte";
-  import And from "$lib/components/And.svelte";
+  import EventDriven from "$lib/components/EventDriven.svelte";
   import Community from "$lib/components/Community.svelte";
 </script>
 
 <main class="flex flex-col w-full">
   <Hero />
-  <Another />
+  <Fold />
   <Evolution />
-  <And />
+  <EventDriven />
   <Comparisons />
   <Community />
   <Footer />

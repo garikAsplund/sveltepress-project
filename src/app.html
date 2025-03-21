@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/hyperlight.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
-			rel="stylesheet"
-		/>
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" class="selection:bg-teal-300/80 selection:text-black/90">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/hyperlight.svg" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="stylesheet"
+      href="node_modules/lite-youtube-embed/src/lite-yt-embed.css"
+    />
+
+    <script src="node_modules/lite-youtube-embed/src/lite-yt-embed.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
 </html>

@@ -16,26 +16,26 @@
     {
       title: "Minimal Resource Footprint",
       description:
-        "Extremely lightweight with just 64KB stack and 128KB default heap size per micro-VM, enabling true scale-to-zero capabilities and efficient resource utilization.",
+        "Extremely lightweight with a 64KB stack and 128KB default heap size, enabling true scale-to-zero capabilities and efficient resource utilization.",
     },
     {
       title: "Portable Abstraction Layer",
       description:
-        "Run on multiple hypervisors (Hyper-V, mshv, KVM) across different platforms without changing your code, providing flexibility while maintaining consistent security benefits.",
+        "Run on Hyper-V, mshv, or KVM across different platforms without changing your code, providing flexibility while maintaining consistent security benefits.",
     },
   ];
 </script>
 
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8 w-full max-w-[100vw] box-border overflow-x-clip">
   <h2 class="text-3xl font-bold text-center mb-8">
     Why You'll Love Hyperlight
   </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
     {#each features as feature}
       <SimpleCardVariant2
         title={feature.title}
         description={feature.description}
+        class="w-full max-w-full overflow-hidden pr-4"
       />
     {/each}
   </div>

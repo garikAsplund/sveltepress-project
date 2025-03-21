@@ -37,8 +37,90 @@ index cca43bac6be4866cd0b34998e073a6584e015ba9..d0e804b4f335c8f7ce6c3cc93afb0d44
    }
    :global(.theme-default--page-layout h1:hover .svp-title-anchor),
    :global(.theme-default--page-layout h2:hover .svp-title-anchor),
+diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
+index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..bc4d389b99a67280d1a472214a5378f180245dea 100644
+--- a/dist/components/Sidebar.svelte
++++ b/dist/components/Sidebar.svelte
+@@ -1,16 +1,22 @@
+ <script>
+-  import { page } from '$app/stores'
+-  import Backdrop from './Backdrop.svelte'
+-  import Close from './icons/Close.svelte'
+-  import { resolvedSidebar, sidebarCollapsed } from './layout'
+-  import Logo from './Logo.svelte'
+-  import SidebarGroup from './SidebarGroup.svelte'
++  import { page } from "$app/stores";
++  import Backdrop from "./Backdrop.svelte";
++  import Close from "./icons/Close.svelte";
++  import { resolvedSidebar, sidebarCollapsed, resolveSidebar } from "./layout";
++  import Logo from "./Logo.svelte";
++  import SidebarGroup from "./SidebarGroup.svelte";
++  import { afterNavigate } from "$app/navigation";
+ 
+-  const routeId = $derived($page.route.id)
+-  const isHome = $derived(routeId === '/')
++  const routeId = $derived($page.route.id);
++  const isHome = $derived(routeId === "/");
++
++  afterNavigate(() => {
++    resolveSidebar(routeId);
++    console.log($resolvedSidebar);
++  });
+ 
+   function handleClose() {
+-    $sidebarCollapsed = true
++    $sidebarCollapsed = true;
+   }
+ </script>
+ 
+@@ -31,32 +37,33 @@
+       <Close />
+     </div>
+   </div>
+-
+-  {#each $resolvedSidebar as sidebarItem}
+-    {@const hasItems = Array.isArray(sidebarItem.items)}
+-    <SidebarGroup
+-      {...hasItems ? sidebarItem : { title: '', items: [sidebarItem] }}
+-    />
+-  {/each}
++  <!-- {#key routeId} -->
++    {#each $resolvedSidebar as sidebarItem}
++      {@const hasItems = Array.isArray(sidebarItem.items)}
++      <SidebarGroup
++        {...hasItems ? sidebarItem : { title: "", items: [sidebarItem] }}
++      />
++    {/each}
++  <!-- {/key} -->
+ </aside>
+ 
+ <Backdrop show={!$sidebarCollapsed} on:close={handleClose} />
+ 
+ <style>
+   .is-home {
+-    --at-apply: 'sm:hidden';
++    --at-apply: "sm:hidden";
+   }
+   .theme-default-sidebar {
+-    --at-apply: 'fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none';
++    --at-apply: "fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none";
+   }
+   .sidebar-logo {
+-    --at-apply: 'sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7';
++    --at-apply: "sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7";
+   }
+   .collapsed {
+-    --at-apply: 'sm:translate-x-0';
++    --at-apply: "sm:translate-x-0";
+     transform: translateX(-100%);
+   }
+   .close {
+-    --at-apply: 'text-5 flex items-center sm:hidden ml-4';
++    --at-apply: "text-5 flex items-center sm:hidden ml-4";
+   }
+ </style>
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
-index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..b863b8af3bd4c25bebd26f3f4719dd5bb7982599 100644
+index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368d3cbf87e 100644
 --- a/dist/components/ToggleDark.svelte
 +++ b/dist/components/ToggleDark.svelte
 @@ -1,77 +1,87 @@
@@ -179,7 +261,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..b863b8af3bd4c25bebd26f3f4719dd5b
    const themeColor = JSON.parse('${JSON.stringify(themeColor)}')
    if (window.localStorage.getItem('${key}') === 'on') {
      document.querySelector('html').classList.add('dark')
-@@ -94,26 +104,28 @@
+@@ -94,26 +104,26 @@
      document.querySelector('html').classList.remove('dark')
      document.getElementById('theme-color').setAttribute('content', themeColor ? themeColor.light : '#ffffff')
    }
@@ -201,7 +283,6 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..b863b8af3bd4c25bebd26f3f4719dd5b
 -    <Sun />
 -  {/if}
 -</div>
-+<!-- {#if $page.url.pathname !== "/"} -->
 +  <div
 +    class="toggle"
 +    onclick={toggle}
@@ -217,7 +298,6 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..b863b8af3bd4c25bebd26f3f4719dd5b
 +      <Sun />
 +    {/if}
 +  </div>
-+<!-- {/if} -->
  
  <style>
    .toggle {
@@ -239,10 +319,10 @@ index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..b2129c25fd25349e8b3a4af984525096
    --docsearch-searchbox-background: transparent;
    --docsearch-logo-color: var(--docsearch-primary-color);
 diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
-index 41367a0c981398e30f2a47bd5d13551acc6704a0..5687a05f3e7b68000a061eac158f6c580db096c0 100644
+index 41367a0c981398e30f2a47bd5d13551acc6704a0..1e493c9f481bece321f0cca4586d274505893900 100644
 --- a/dist/vite-plugins/create-pre-core-plugins.js
 +++ b/dist/vite-plugins/create-pre-core-plugins.js
-@@ -49,10 +49,11 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+@@ -49,13 +49,14 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
  import Unocss from 'unocss/vite';
  import { SERVICE_WORKER_PATH } from '../constants.js';
  import { initHighlighter } from '../markdown/highlighter.js';
@@ -254,8 +334,13 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..5687a05f3e7b68000a061eac158f6c58
 +    start: '#D8B4FE',
 +    end: '#818CF8',
  };
- var DEFAULT_PRIMARY = '#fb7185';
- var DEFAULT_HOVER = '#f43f5e';
+-var DEFAULT_PRIMARY = '#fb7185';
+-var DEFAULT_HOVER = '#f43f5e';
++var DEFAULT_PRIMARY = '#00838f';
++var DEFAULT_HOVER = '#00b8c2';
+ function getIconSafelist(themeOptions) {
+     var icons = themeOptions === null || themeOptions === void 0 ? void 0 : themeOptions.preBuildIconifyIcons;
+     if (!icons)
 @@ -92,6 +93,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
                          presets: [
                              presetUno(),
