@@ -44,7 +44,7 @@
   ></div>
 
   <div
-    class="relative mx-auto max-w-7xl px-6 pt-20 pb-24 sm:pt-32 sm:pb-36 lg:px-8 lg:pb-40"
+    class="relative flex justify-center lg:justify-between mx-auto max-w-7xl px-6 pt-20 pb-24 sm:pt-32 sm:pb-36 lg:px-8 lg:pb-40"
   >
     <div
       style="transition: opacity 600ms ease-in-out;"
@@ -52,7 +52,7 @@
       class:opacity-100={visible}
     >
       <div
-        class="flex flex-col gap-12 items-center md:flex-row md:items-center md:justify-between"
+        class="flex flex-col gap-12 items-center md:flex-row md:items-center md:justify-between max-w-4xl"
       >
         <!-- Left content -->
         <div class="max-w-2xl">
@@ -61,7 +61,7 @@
             class="mb-6 flex flex-col-reverse items-center gap-4 sm:flex-row"
           >
             <div
-              class="z-100 flex w-full justify-center p-3 opacity-90 shadow-lg scale-90 -translate-y-10 sm:translate-y-0"
+              class="z-100 flex w-full justify-center p-3 opacity-90 shadow-lg scale-90 sm:translate-x-10 md:translate-x-0"
             >
               <WarpspeedLogo />
               <div class="invisible"><Logo /></div>
@@ -125,13 +125,12 @@
               <div class="h-3 w-3 rounded-full bg-gray-300"></div>
               <div class="ml-2 text-xs text-slate-300"></div>
             </div>
-
-            <div class="p-4 font-mono text-sm">
-              <p class="fixed inset-y-10 text-emerald-400">
+            <div class="p-4 font-mono text-sm relative">
+              <p class="text-emerald-400">
                 <span>$</span>
                 {@html terminalText}<span class="animate-pulse">█</span>
               </p>
-              <p class="fixed inset-y-10 text-emerald-400 blur-md opacity-55">
+              <p class="text-emerald-400 blur-md opacity-55 absolute top-0 left-0 mt-4 ml-4">
                 <span>$</span>
                 {@html terminalText}<span class="animate-pulse">█</span>
               </p>
