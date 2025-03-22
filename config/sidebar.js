@@ -19,6 +19,10 @@ export default {
       collapsible: true,
       items: [
         {
+          title: "Introduction",
+          to: "/docs/introduction",
+        },
+        {
           title: "Execution Details",
           to: "/docs/hyperlight-execution-details",
         },

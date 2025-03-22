@@ -84,7 +84,7 @@
           <!-- CTA buttons -->
           <div class="flex w-full flex-wrap justify-center gap-4">
             <a
-              href="/docs"
+              href="/docs/introduction"
               class="group inline-flex items-center justify-center rounded-lg bg-purple-600 px-5 py-3 text-base font-medium text-white shadow-lg transition-all duration-250 hover:bg-purple-500 hover:shadow-purple-600/30"
             >
               Documentation
