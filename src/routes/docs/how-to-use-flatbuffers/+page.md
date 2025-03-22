@@ -4,7 +4,7 @@ Flatbuffers is used to serialize and deserialize some data structures.
 
 Schema files are used to define the data structures and are used to generate the code to serialize and deserialize the data structures.
 
-Those files are located in the [`schema`](../src/schema) directory.
+Those files are located in the [`schema`](https://github.com/hyperlight-dev/hyperlight/tree/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/schema) directory.
 
 Code generated from the schema files is checked in to the repository, therefore you only need to generate the code if you change an existing schema file or add a new one. You can find details on how to update schema files [here](https://google.github.io/flatbuffers/flatbuffers_guide_writing_schema.html).
 
