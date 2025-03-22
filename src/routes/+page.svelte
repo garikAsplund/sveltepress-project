@@ -12,6 +12,7 @@
   import Hero from "$lib/components/Hero.svelte";
   import EventDriven from "$lib/components/EventDriven.svelte";
   import Community from "$lib/components/Community.svelte";
+  import Contributors from "$lib/components/Contributors.svelte";
 </script>
 
 <main class="flex flex-col w-full">
@@ -21,5 +22,6 @@
   <EventDriven />
   <Comparisons />
   <Community />
+  <Contributors />
   <Footer />
 </main>

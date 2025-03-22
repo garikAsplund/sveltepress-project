@@ -41,7 +41,7 @@
     // Get viewport height to adjust rootMargins dynamically
     const viewportHeight = window.innerHeight;
     // Calculate base spacing - smaller on mobile, larger on desktop
-    const baseSpacing = Math.min(viewportHeight * 0.15, 150); // 15% of viewport height, max 150px
+    const baseSpacing = Math.min(viewportHeight * 0.10, 150); // 15% of viewport height, max 150px
     
     // Create separate observers with different rootMargins
     

@@ -28,7 +28,7 @@
 
 <div class="container mx-auto px-4 py-8 w-full max-w-[100vw] box-border overflow-x-clip">
   <h2 class="text-3xl font-bold text-center mb-8">
-    Why You'll Love Hyperlight
+    Why you'll love Hyperlight
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
     {#each features as feature}
