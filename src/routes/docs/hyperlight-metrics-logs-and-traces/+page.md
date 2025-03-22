@@ -39,15 +39,15 @@ The rationale for disabling the function call metrics by default is that:
 * A Hyperlight host may wish to provide its own metrics for function calls.
 * Enabling a trace subscriber will cause the function call metrics to be emitted as trace events, which may be sufficient for some use cases.
 
-There is an example of how to gather metrics in the [examples/metrics](../src/hyperlight_host/examples/metrics) directory.
+There is an example of how to gather metrics in the [examples/metrics](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/examples/metrics) directory.
 
-The metrics capabilities provided by Hyperlight can also be used by a library or host that is using Hyperlight to provide additional metrics, see the [hypervisor metrics module](../src/hyperlight_host/src/hypervisor/metrics.rs) for an example of how to define metrics.
+The metrics capabilities provided by Hyperlight can also be used by a library or host that is using Hyperlight to provide additional metrics, see the [hypervisor metrics module](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/src/hypervisor/metrics.rs) for an example of how to define metrics.
 
 ## Logs
 
 Hyperlight provides logs using the Rust [log crate](https://docs.rs/log/0.4.6/log/), and can be consumed by any Rust logger implementation, including LogTracer which can be used to emit log records as tracing events(see below for more details). To consume logs, the host application must provide a logger implementation either by using the `set_logger` function directly or using a logger implementation that is compatible with the log crate.
 
-For an example that uses the `env_logger` crate, see the [examples/logging](../src/hyperlight_host/examples/logging) directory. By default, the `env_logger` crate will only log messages at the `error` level or higher. To see all log messages, set the `RUST_LOG` environment variable to `debug`.
+For an example that uses the `env_logger` crate, see the [examples/logging](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/examples/logging) directory. By default, the `env_logger` crate will only log messages at the `error` level or higher. To see all log messages, set the `RUST_LOG` environment variable to `debug`.
 
 Hyperlight also provides tracing capabilities (see below for more details), if no trace subscriber is registered, trace records will be emitted as log records, using the `log` feature of the [tracing crate](https://docs.rs/tracing/latest/tracing/#crate-feature-flags).
 
@@ -61,7 +61,7 @@ There are two examples that show how to consume both tracing events and log reco
 
 ### Using tracing_forest
 
-In the [examples/tracing](../src/hyperlight_host/examples/tracing) directory, there is an example that shows how to capture and output trace and log information using the tracing_forest crate. With this example the following commands can be used to set the verbosity of the trace output to `INFO` and run the example:
+In the [examples/tracing](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/examples/tracing) directory, there is an example that shows how to capture and output trace and log information using the tracing_forest crate. With this example the following commands can be used to set the verbosity of the trace output to `INFO` and run the example:
 
 #### Linux
 
@@ -77,7 +77,7 @@ $env:RUST_LOG='none,hyperlight-host=info,tracing=info'; cargo run --example trac
 
 ### Using OTLP exporter and Jaeger
 
-In the [examples/otlp_tracing](../src/hyperlight_host/examples/otlp_tracing) directory, there is an example that shows how to capture and send trace and log information to an otlp_collector using the opentelemetry_otlp crate. With this example the following commands can be used to set the verbosity of the trace output to `INFO` and run the example to generate trace data:
+In the [examples/otlp_tracing](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/examples/otlp_tracing) directory, there is an example that shows how to capture and send trace and log information to an otlp_collector using the opentelemetry_otlp crate. With this example the following commands can be used to set the verbosity of the trace output to `INFO` and run the example to generate trace data:
 
 #### Linux
 

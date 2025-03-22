@@ -4,6 +4,6 @@
 
 > Note: The use of surrogates is a temporary workaround on Windows until WHP allows us to create more than one partition per running process.
 
-These surrogate processes are managed by the host via the [surrogate_process_manager](./src/hyperlight_host/src/hypervisor/surrogate_process_manager.rs) which will launch several of these surrogates (up to the 512), assign memory to them, then launch partitions from there, and reuse them as necessary.
+These surrogate processes are managed by the host via the [surrogate_process_manager](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/src/hypervisor/surrogate_process_manager.rs) which will launch several of these surrogates (up to the 512), assign memory to them, then launch partitions from there, and reuse them as necessary.
 
 `hyperlight_surrogate.exe` gets built during `hyperlight-host`'s build script, gets embedded into the `hyperlight-host` Rust library via [rust-embed](https://crates.io/crates/rust-embed), and is extracted at runtime next to the executable when the surrogate process manager is initialized.
