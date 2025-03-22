@@ -51,7 +51,7 @@
 </script>
 
 <section class="py-12 bg-[#080c1a] pb-24" id="community">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-bold text-gray-300 mb-4">Join our community</h2>
     </div>
@@ -59,7 +59,7 @@
     <div class="grid md:grid-cols-3 gap-8">
       <!-- Community Meetings Card -->
       <div
-        class="bg-[#0b1021] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#a796ff]/20 hover:-translate-y-1 border border-[#1c2035] flex flex-col"
+        class="max-w-md bg-[#0b1021] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#a796ff]/20 hover:-translate-y-1 border border-[#1c2035] flex flex-col"
         transition:fade
       >
         <div class="bg-[#1c2035] px-4 py-0">
@@ -146,7 +146,7 @@
 
       <!-- Contributing Card -->
       <div
-        class="bg-[#0c1124] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#a3a7ff]/20 hover:-translate-y-1 border border-[#1d2138] flex flex-col"
+        class="max-w-md bg-[#0c1124] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#a3a7ff]/20 hover:-translate-y-1 border border-[#1d2138] flex flex-col"
         transition:fade
       >
         <div class="bg-[#1d2138]  px-4 py-0">
@@ -225,7 +225,7 @@
 
       <!-- Chat & Connect Card -->
       <div
-        class="bg-[#0a0f1d] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#9ba7ff]/20 hover:-translate-y-1 border border-[#1a2038] flex flex-col"
+        class="max-w-md bg-[#0a0f1d] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#9ba7ff]/20 hover:-translate-y-1 border border-[#1a2038] flex flex-col"
         transition:fade
       >
         <div class="bg-[#1a2038]  px-4 py-0">
