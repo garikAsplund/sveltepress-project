@@ -1,5 +1,8 @@
 /* @import "tailwindcss"; */
 /* @plugin "@tailwindcss/typography"; */
+:root {
+  scroll-padding-top: 80px; /* header height (60px) + 20px extra padding */
+}
 
 .major-mono-display-regular {
   font-family: "Major Mono Display", monospace;
