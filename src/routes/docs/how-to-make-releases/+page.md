@@ -40,7 +40,7 @@ When this job is done, a new [GitHub release](https://github.com/hyperlight-dev/
 - `hyperlight-guest`
 - `hyperlight-host`
 
-## Patching a release
+## <a id="patching-a-release"></a>Patching a release
 
 If you need to update a previously released version of Hyperlight then you should open a Pull Request against the release branch you want to patch, for example if you wish to patch the release `v0.4.0` then you should open a PR against the `release/v0.4.0` branch.
 

@@ -35,7 +35,7 @@ session of a guest binary running inside a KVM Hyperlight sandbox.
 
 ## Example
 
-### Sandbox configuration
+### <a id="sandbox-configuration"></a>Sandbox configuration
 
 The `guest-debugging` example in Hyperlight demonstrates how to configure a Hyperlight
 sandbox to listen for a gdb client on a specific port.

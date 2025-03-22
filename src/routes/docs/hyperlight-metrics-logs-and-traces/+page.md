@@ -6,7 +6,7 @@ Hyperlight provides the following observability features:
 * [Logs](#logs) are provided using the Rust [log crate](https://docs.rs/log/0.4.6/log/), and can be consumed by any Rust logger implementation, including LogTracer which can be used to emit log records as tracing events.
 * [Tracing](#tracing) is provided using the Rust [tracing crate](https://docs.rs/tracing/0.1.37/tracing/), and can be consumed by any Rust tracing implementation. In addition, the [log feature](https://docs.rs/tracing/latest/tracing/#crate-feature-flags) is enabled which means that should a hyperlight host application not want to consume tracing events, you can still consume them as logs.
 
-## Metrics
+## <a id="metrics"></a>Metrics
 
 Hyperlight provides metrics using Prometheus. The metrics are registered using either the [default_registry](https://docs.rs/prometheus/latest/prometheus/fn.default_registry.html) or a registry instance provided by the host application.
 
@@ -43,7 +43,7 @@ There is an example of how to gather metrics in the [examples/metrics](https://g
 
 The metrics capabilities provided by Hyperlight can also be used by a library or host that is using Hyperlight to provide additional metrics, see the [hypervisor metrics module](https://github.com/hyperlight-dev/hyperlight/blob/44e66542f1f878c8ce6e93237c4925825aa3e39c/src/hyperlight_host/src/hypervisor/metrics.rs) for an example of how to define metrics.
 
-## Logs
+## <a id="logs"></a>Logs
 
 Hyperlight provides logs using the Rust [log crate](https://docs.rs/log/0.4.6/log/), and can be consumed by any Rust logger implementation, including LogTracer which can be used to emit log records as tracing events(see below for more details). To consume logs, the host application must provide a logger implementation either by using the `set_logger` function directly or using a logger implementation that is compatible with the log crate.
 
@@ -51,7 +51,7 @@ For an example that uses the `env_logger` crate, see the [examples/logging](http
 
 Hyperlight also provides tracing capabilities (see below for more details), if no trace subscriber is registered, trace records will be emitted as log records, using the `log` feature of the [tracing crate](https://docs.rs/tracing/latest/tracing/#crate-feature-flags).
 
-## Tracing
+## <a id="tracing"></a>Tracing
 
 Tracing spans are created for any call to a public API and the parent span will be set to the current span in the host if one exists, the level of the span is set to `info`. The span will be closed when the call returns. Any Result that contains an error variant will be logged as an error event. In addition to the public APIs, all internal functions are instrumented with trace spans at the `trace` level, therefore in order to see full trace information, the trace level should be enabled.
 

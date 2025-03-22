@@ -57,7 +57,7 @@ Diagram is taken from "The Intel® 64 and IA-32 Architectures Software Developer
 
 Since we only have 1 PML4E and only 1 PDPTE, bits 47:30 of a linear address must be zero. Thus, we have only 30 bits (bit 29:0) to work with, giving us access to (1 << 30) bytes of memory (1GB).
 
-## Access Flags
+## <a id="access-flags"></a>Access Flags
 
 In addition to providing addresses, page table entries also contain access flags that describe how memory can be accessed, and whether it is present or not. The following access flags are set on each entry:
 
