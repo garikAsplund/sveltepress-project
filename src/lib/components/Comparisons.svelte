@@ -3,9 +3,16 @@
   import YouTubeTalk from "./YouTubeTalk.svelte";
 </script>
 
-<section class="w-full flex flex-col items-center">
+<section class="relative w-full flex flex-col items-center transform-gpu will-change-transform">
+  <div class="absolute inset-0 bg-black">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-black to-blue-950 opacity-90"
+    ></div>
+    <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+  </div>
+  
   <div
-    class="relative flex h-48 w-full items-end justify-center overflow-hidden border bg-background md:shadow-xl "
+    class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-none"
   >
     <p
       class="z-10 whitespace-pre-wrap text-center text-4xl font-medium text-black dark:text-white"
@@ -13,9 +20,9 @@
       Serverless functions with speed <i>and</i> security
     </p>
     <DotPattern
-      class="[mask-image:linear-gradient(white,transparent)]"
-      width="3"
-      height="3"
+      class="[mask-image:linear-gradient(white,transparent)] opacity-80"
+      width="4"
+      height="4"
       x={1}
       y={1}
       cy={2}
@@ -23,5 +30,6 @@
       cx={2}
     />
   </div>
+  
   <YouTubeTalk />
 </section>

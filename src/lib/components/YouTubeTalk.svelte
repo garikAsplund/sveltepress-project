@@ -22,12 +22,12 @@
 <!-- Main container with gradient background -->
 <div class="relative w-full py-16">
   <!-- Background with dark overlay and blur effect -->
-  <div class="absolute inset-0 bg-black">
+  <!-- <div class="absolute inset-0 bg-black">
     <div
       class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900 opacity-90"
     ></div>
     <div class="absolute inset-0 backdrop-blur-sm"></div>
-  </div>
+  </div> -->
 
   <!-- Content section with two columns -->
   <div class="relative mx-auto max-w-7xl px-4">
