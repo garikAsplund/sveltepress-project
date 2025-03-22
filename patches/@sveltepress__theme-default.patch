@@ -1,7 +1,16 @@
 diff --git a/dist/components/GlobalLayout.svelte b/dist/components/GlobalLayout.svelte
-index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..f09b6bb7807e095b682985ef75be249c927fd5b7 100644
+index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b2661fea280e 100644
 --- a/dist/components/GlobalLayout.svelte
 +++ b/dist/components/GlobalLayout.svelte
+@@ -99,7 +99,7 @@
+ 
+ <style>
+   main {
+-    --at-apply: 'pt-[76px] sm:pt-[73px]';
++    --at-apply: 'pt-[56px] sm:pt-[73px]';
+   }
+   main.without-header {
+     --at-apply: 'pt-4';
 @@ -108,7 +108,7 @@
      --at-apply: 'scroll-smooth';
    }
@@ -38,10 +47,10 @@ index cca43bac6be4866cd0b34998e073a6584e015ba9..d0e804b4f335c8f7ce6c3cc93afb0d44
    :global(.theme-default--page-layout h1:hover .svp-title-anchor),
    :global(.theme-default--page-layout h2:hover .svp-title-anchor),
 diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
-index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..bc4d389b99a67280d1a472214a5378f180245dea 100644
+index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf43260b07 100644
 --- a/dist/components/Sidebar.svelte
 +++ b/dist/components/Sidebar.svelte
-@@ -1,16 +1,22 @@
+@@ -1,16 +1,21 @@
  <script>
 -  import { page } from '$app/stores'
 -  import Backdrop from './Backdrop.svelte'
@@ -64,7 +73,6 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..bc4d389b99a67280d1a472214a5378f1
 +
 +  afterNavigate(() => {
 +    resolveSidebar(routeId);
-+    console.log($resolvedSidebar);
 +  });
  
    function handleClose() {
@@ -73,7 +81,7 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..bc4d389b99a67280d1a472214a5378f1
    }
  </script>
  
-@@ -31,32 +37,33 @@
+@@ -31,32 +36,31 @@
        <Close />
      </div>
    </div>
@@ -84,14 +92,12 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..bc4d389b99a67280d1a472214a5378f1
 -      {...hasItems ? sidebarItem : { title: '', items: [sidebarItem] }}
 -    />
 -  {/each}
-+  <!-- {#key routeId} -->
 +    {#each $resolvedSidebar as sidebarItem}
 +      {@const hasItems = Array.isArray(sidebarItem.items)}
 +      <SidebarGroup
 +        {...hasItems ? sidebarItem : { title: "", items: [sidebarItem] }}
 +      />
 +    {/each}
-+  <!-- {/key} -->
  </aside>
  
  <Backdrop show={!$sidebarCollapsed} on:close={handleClose} />
@@ -319,7 +325,7 @@ index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..b2129c25fd25349e8b3a4af984525096
    --docsearch-searchbox-background: transparent;
    --docsearch-logo-color: var(--docsearch-primary-color);
 diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
-index 41367a0c981398e30f2a47bd5d13551acc6704a0..1e493c9f481bece321f0cca4586d274505893900 100644
+index 41367a0c981398e30f2a47bd5d13551acc6704a0..3961fa8449109d2dfabe1105656599a119dc5825 100644
 --- a/dist/vite-plugins/create-pre-core-plugins.js
 +++ b/dist/vite-plugins/create-pre-core-plugins.js
 @@ -49,13 +49,14 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
@@ -349,6 +355,15 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..1e493c9f481bece321f0cca4586d2745
                          ],
                          transformers: [transformerDirectives()],
                          theme: {
+@@ -109,7 +111,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+                         shortcuts: {
+                             'svp-gradient-bg': "bg-gradient-linear bg-gradient-[45deg,".concat(gradient.start, ",").concat(gradient.end, "]"),
+                             'svp-gradient-text': 'svp-gradient-bg bg-clip-text text-transparent',
+-                            'svp-modal-bg': 'sm:hidden fixed top-0 bottom-0 right-0 left-0 bg-black dark:bg-white bg-opacity-70 dark:bg-opacity-70 z-900 opacity-0 pointer-events-none transition-opacity transition-300',
++                            'svp-modal-bg': 'sm:hidden fixed top-0 bottom-0 right-0 left-0 bg-black backdrop-blur-md dark:bg-black bg-opacity-70 dark:bg-opacity-30 z-900 opacity-0 pointer-events-none transition-opacity transition-300',
+                             'svp-modal-bg-show': 'opacity-100 pointer-events-auto',
+                         },
+                         safelist: __spreadArray([], iconSafelist, true),
 diff --git a/package.json b/package.json
 index f49f8de4032e8d0cb587f3569c13485800ea2c50..33f9ec704edd607477bb0230e1b0450833af8ab5 100644
 --- a/package.json
