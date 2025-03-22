@@ -21,7 +21,7 @@ index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b266
        'Inter var experimental',
        'Inter var',
 diff --git a/dist/components/Navbar.svelte b/dist/components/Navbar.svelte
-index dd7db439070a656c38940aab34484a969139e1d2..6f7bb5f7c84dd45640794d3fc8e0db83cd4c9202 100644
+index dd7db439070a656c38940aab34484a969139e1d2..8bd4bfee33948614fd42bf346666e77ff6015b61 100644
 --- a/dist/components/Navbar.svelte
 +++ b/dist/components/Navbar.svelte
 @@ -1,22 +1,22 @@
@@ -125,7 +125,7 @@ index dd7db439070a656c38940aab34484a969139e1d2..6f7bb5f7c84dd45640794d3fc8e0db83
    }
    .logo-container {
 -    --at-apply: 'hidden sm:block';
-+    --at-apply: "hidden";
++    --at-apply: "hidden sm:block";
    }
    .header-inner {
 -    --at-apply: 'sm:w-[80vw] h-full flex items-stretch justify-between mx-auto';
