@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import "lite-youtube-embed/src/lite-yt-embed.css";
+  import "$lib/lite-youtube/lite-yt-embed.css";
   import { Code, SquareFunction, SunSnow } from "lucide-svelte";
   // Dynamically import the JS to avoid SSR issues
   let liteYouTubeLoaded = $state(false);
