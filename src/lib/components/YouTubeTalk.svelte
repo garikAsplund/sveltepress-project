@@ -46,17 +46,17 @@
           Microsoft's Rita Zhang introduces Hyperlight
         </h3>
 
-        <ul class="space-y-4">
+        <ul class="space-y-4 text-base">
           <li class="flex items-start gap-2">
             <SunSnow />
             <span class="text-gray-200"
-              >MicroVMs can be cold or warm started</span
+              >MicroVMs can be started cold in isolation or warm from a pool</span
             >
           </li>
           <li class="flex items-start gap-2">
             <Code />
             <span class="text-gray-200"
-              >Supports ELF binaries, WebAssembly, and JavaScript</span
+              >Supports running WebAssembly, JavaScript, and more</span
             >
           </li>
           <li class="flex items-start gap-2">
