@@ -26,7 +26,7 @@
   ];
 </script>
 
-<div class="container mx-auto px-4 py-8 w-full max-w-[100vw] box-border overflow-x-clip">
+<div class="container mx-auto px-4 py-8 w-full max-w-[100vw] sm:max-w-5xl box-border overflow-x-clip">
   <h2 class="text-3xl font-bold text-center mb-8">
     Why you'll love Hyperlight
   </h2>
