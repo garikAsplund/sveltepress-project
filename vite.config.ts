@@ -23,9 +23,9 @@ const config = defineConfig({
           },
         },
         docsearch: {
-          appId: "XXX",
-          apiKey: "XXX",
-          indexName: "XXX",
+          appId: "SSS54K4ITB",
+          apiKey: "ca1cf8479bb21819f3d5f9deaf23b7ad",
+          indexName: "hyperlight_draft_vercel_app_sss54k4itb_pages",
         },
         navbar,
         sidebar,
