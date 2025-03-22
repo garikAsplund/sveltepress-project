@@ -61,7 +61,7 @@
             class="mb-6 flex flex-col items-center gap-4 sm:flex-row overflow-hidden"
           >
             <div
-              class="z-10 flex justify-center p-3 opacity-90 shadow-lg scale-90 sm:translate-x-10 md:translate-x-0"
+              class="z-10 flex justify-center p-3 opacity-90 shadow-lg scale-90"
             >
               <WarpspeedLogo />
               <div class="invisible"><Logo /></div>

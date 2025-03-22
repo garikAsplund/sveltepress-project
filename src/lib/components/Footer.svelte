@@ -6,14 +6,9 @@
 <footer
 	class="bottom-0 mt-auto flex w-full flex-col justify-end bg-gradient-to-b from-transparent to-purple-600/30 backdrop-blur-sm"
 >
-	<!-- Original footer from the first image that worked on desktop -->
-	<div class="hidden md:block container mx-auto px-4">
-		<div class="flex flex-row items-center justify-between gap-8 pt-12">
-			<div class="flex flex-col items-start gap-4">
-				<p class="text-sm font-medium text-white/90">
-					We are a <span class="font-semibold text-white">Cloud Native Computing Foundation</span> sandbox
-					project.
-				</p>
+	<div class="block container mx-auto px-4 box-border" style="max-width: 100vw;">
+		<div class="flex flex-col items-center justify-between  pt-12">
+			<div class="flex flex-col items-center gap-2 max-w-full">
 				<div class="h-12 w-auto">
 					<a
 						href="https://www.cncf.io/"
@@ -24,67 +19,13 @@
 					>
 						<CNCF_logo_white />
 					</a>
-				</div>
-			</div>
-
-			<div class="flex flex-col items-end gap-4">
-				<div class="flex items-end h-12 gap-6">
-					<a
-						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-white/80 transition-all duration-200 hover:opacity-85"
-						aria-label="Join our Slack"
-					>
-						<Slack />
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Mobile-only version with fixes -->
-	<div class="block md:hidden container mx-auto px-4 box-border" style="max-width: 100vw;">
-		<div class="flex flex-col items-center justify-between gap-8 pt-12">
-			<div class="flex flex-col items-center gap-8 max-w-full">
-				<p class="text-center text-sm font-medium text-white/90" style="word-break: break-word; max-width: 100%;">
+				</div><p class="text-center text-sm sm:text-base font-medium text-white/90" style="word-break: break-word; max-width: 100%;">
 					We are a <span class="font-semibold text-white">Cloud Native Computing Foundation</span> sandbox
 					project.
 				</p>
-				<div class="h-12 w-auto">
-					<a
-						href="https://www.cncf.io/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="block transition-all duration-200 hover:opacity-80"
-						aria-label="CNCF Website"
-					>
-						<CNCF_logo_white />
-					</a>
-				</div>
+				
 			</div>
-
-			<div class="flex flex-col items-center gap-4 w-full">
-				<div class="flex items-center justify-center h-12 gap-6 mb-4">
-					<a
-						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-white/80 transition-all duration-200 hover:opacity-85"
-						aria-label="Join our Slack"
-					>
-						<Slack />
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="w-full">
-		<div
-			class="container mx-auto flex flex-col sm:flex-row items-center sm:justify-between px-4 py-4 text-xs text-white/60 gap-4"
-		>
-			<div class="flex gap-4 justify-center w-full sm:w-auto">
+<div class="flex gap-4 justify-center w-full sm:w-auto py-3">
 				<!-- <p class="text-xs text-white/70">© {new Date().getFullYear()} Hyperlight</p> -->
 				<a
 					href="https://www.linuxfoundation.org/legal/trademark-usage"
@@ -94,20 +35,21 @@
 				>
 				|
 				<a
-					href="https://www.linuxfoundation.org/legal/privacy-policy"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="transition-all duration-200 hover:text-white/80 hover:underline">Privacy Policy</a
-				>
-				|
-				<a
 					href="https://www.linuxfoundation.org/legal/terms"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="transition-all duration-200 hover:text-white/80 hover:underline">Terms</a
 				>
+				|
+				<a
+					href="https://www.linuxfoundation.org/legal/privacy-policy"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="transition-all duration-200 hover:text-white/80 hover:underline">Privacy Policy</a
+				>
 			</div>
-			<div class="flex items-center p-2 justify-center w-full sm:w-auto">
+		</div>
+		<div class="flex items-center py-3 justify-center w-full sm:w-auto">
 				Website by <a
 					href="https://garik.codes"
 					target="_blank"
@@ -127,6 +69,5 @@
 					></a
 				>
 			</div>
-		</div>
 	</div>
 </footer>

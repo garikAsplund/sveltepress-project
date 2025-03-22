@@ -21,18 +21,148 @@ index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b266
        'Inter var experimental',
        'Inter var',
 diff --git a/dist/components/Navbar.svelte b/dist/components/Navbar.svelte
-index dd7db439070a656c38940aab34484a969139e1d2..90ea0db2413e8dda1d5052196455e13564cf9c3e 100644
+index dd7db439070a656c38940aab34484a969139e1d2..6f7bb5f7c84dd45640794d3fc8e0db83cd4c9202 100644
 --- a/dist/components/Navbar.svelte
 +++ b/dist/components/Navbar.svelte
-@@ -78,7 +78,7 @@
+@@ -1,22 +1,22 @@
+ <script>
+-  import { page } from '$app/stores'
+-  import themeOptions from 'virtual:sveltepress/theme-default'
+-  import Discord from './icons/Discord.svelte'
+-  import Github from './icons/Github.svelte'
+-  import { scrollDirection } from './layout'
+-  import Logo from './Logo.svelte'
+-  import MobileSubNav from './MobileSubNav.svelte'
+-  import NavbarMobile from './NavbarMobile.svelte'
+-  import NavItem from './NavItem.svelte'
+-  import Search from './Search.svelte'
+-  import ToggleDark from './ToggleDark.svelte'
++  import { page } from "$app/stores";
++  import themeOptions from "virtual:sveltepress/theme-default";
++  import Discord from "./icons/Discord.svelte";
++  import Github from "./icons/Github.svelte";
++  import { scrollDirection } from "./layout";
++  import Logo from "./Logo.svelte";
++  import MobileSubNav from "./MobileSubNav.svelte";
++  import NavbarMobile from "./NavbarMobile.svelte";
++  import NavItem from "./NavItem.svelte";
++  import Search from "./Search.svelte";
++  import ToggleDark from "./ToggleDark.svelte";
+ 
+-  const routeId = $derived($page.route.id)
+-  const isHome = $derived(routeId === '/')
+-  const hasError = $derived($page.error)
++  const routeId = $derived($page.route.id);
++  const isHome = $derived(routeId === "/");
++  const hasError = $derived($page.error);
+ </script>
+ 
+-<header class="header" class:hidden-in-mobile={$scrollDirection === 'down'}>
++<header class="header" class:hidden-in-mobile={$scrollDirection === "down"}>
+   <div class="header-inner">
+     <div class="left">
+       <NavbarMobile />
+@@ -43,29 +43,38 @@
+             <NavItem {...navItem} />
+           {/each}
+         </div>
+-        {#if themeOptions.github}
++        {#if themeOptions.discord}
+           <NavItem
+-            to={themeOptions.github}
++            to={themeOptions.discord}
+             external
+             icon
+             builtInIcon
+-            title="Github"
++            title="Slack"
+           >
+-            <Github />
++            <svg
++              xmlns="http://www.w3.org/2000/svg"
++              viewBox="0.16 -0.03 21.19 21.19"
++              class="h-5 w-5"
++              aria-label="Slack"
++              ><path
++                fill="currentColor"
++                d="M4.896 13.27a2.147 2.147 0 0 1-2.141 2.142A2.147 2.147 0 0 1 .613 13.27c0-1.178.963-2.141 2.142-2.141h2.141v2.141zm1.08 0c0-1.178.962-2.141 2.141-2.141s2.142.963 2.142 2.141v5.363a2.147 2.147 0 0 1-2.142 2.141 2.147 2.147 0 0 1-2.141-2.142V13.27zm2.141-8.6a2.147 2.147 0 0 1-2.141-2.14c0-1.18.962-2.142 2.141-2.142s2.142.963 2.142 2.141v2.142H8.117zm0 1.08c1.179 0 2.141.962 2.141 2.141a2.147 2.147 0 0 1-2.141 2.142H2.755A2.147 2.147 0 0 1 .613 7.89c0-1.179.963-2.141 2.142-2.141h5.362zm8.599 2.141c0-1.179.963-2.141 2.141-2.141 1.179 0 2.143.962 2.143 2.14a2.147 2.147 0 0 1-2.142 2.142h-2.141V7.89zm-1.08 0a2.147 2.147 0 0 1-2.141 2.142 2.147 2.147 0 0 1-2.141-2.142V2.53c0-1.178.962-2.141 2.141-2.141s2.142.963 2.142 2.141v5.362zm-2.141 8.6c1.179 0 2.142.962 2.142 2.14a2.147 2.147 0 0 1-2.142 2.142 2.147 2.147 0 0 1-2.141-2.141V16.49h2.141zm0-1.08a2.147 2.147 0 0 1-2.141-2.141c0-1.179.962-2.142 2.141-2.142h5.362c1.179 0 2.142.963 2.142 2.142a2.147 2.147 0 0 1-2.142 2.142h-5.362z"
++              ></path></svg
++            >
+           </NavItem>
+         {/if}
+-
+-        {#if themeOptions.discord}
++        {#if themeOptions.github}
+           <NavItem
+-            to={themeOptions.discord}
++            to={themeOptions.github}
+             external
+             icon
+             builtInIcon
+-            title="Discord"
++            title="Github"
+           >
+-            <Discord />
++            <Github />
+           </NavItem>
+         {/if}
++
+         <ToggleDark />
+       </div>
+     </nav>
+@@ -77,40 +86,40 @@
+ 
  <style>
    .header {
-     --at-apply: 'transition-transform fixed top-0 left-0 right-0 sm:h-[73px] z-888 dark:bg-opacity-40';
+-    --at-apply: 'transition-transform fixed top-0 left-0 right-0 sm:h-[73px] z-888 dark:bg-opacity-40';
 -    backdrop-filter: blur(5px);
++    --at-apply: "transition-transform fixed top-0 left-0 right-0 sm:h-[73px] z-888 dark:bg-opacity-40";
 +    backdrop-filter: blur(15px);
    }
    .hidden-in-mobile {
-     --at-apply: 'translate-y-[-100%] sm:translate-y-0';
+-    --at-apply: 'translate-y-[-100%] sm:translate-y-0';
++    --at-apply: "translate-y-[-100%] sm:translate-y-0";
+   }
+   .logo-container {
+-    --at-apply: 'hidden sm:block';
++    --at-apply: "hidden";
+   }
+   .header-inner {
+-    --at-apply: 'sm:w-[80vw] h-full flex items-stretch justify-between mx-auto';
++    --at-apply: "sm:w-[80vw] h-full flex items-stretch justify-between mx-auto";
+   }
+   .left {
+-    --at-apply: 'flex items-center';
++    --at-apply: "flex items-center";
+   }
+   .doc-search {
+-    --at-apply: 'flex-grow flex items-center relative transition-500 transition-left';
++    --at-apply: "flex-grow flex items-center relative transition-500 transition-left";
+   }
+   .doc-search.is-home {
+-    --at-apply: 'left-2';
++    --at-apply: "left-2";
+   }
+   .doc-search.move {
+-    --at-apply: 'sm:left-[15.5vw]';
++    --at-apply: "sm:left-[15.5vw]";
+   }
+ 
+   .navbar-pc {
+-    --at-apply: 'items-stretch flex';
++    --at-apply: "items-stretch flex";
+   }
+   .nav-links {
+-    --at-apply: 'flex items-stretch flex-grow justify-end';
++    --at-apply: "flex items-stretch flex-grow justify-end";
+   }
+ 
+   .navbar-pc :global(.nav-item:not(.nav-item--icon)),
+   .navbar-pc :global(.nav-item--user-icon) {
+-    --at-apply: 'hidden sm:flex';
++    --at-apply: "hidden sm:flex";
+   }
+ </style>
 diff --git a/dist/components/PageLayout.svelte b/dist/components/PageLayout.svelte
 index cca43bac6be4866cd0b34998e073a6584e015ba9..d0e804b4f335c8f7ce6c3cc93afb0d447712adef 100644
 --- a/dist/components/PageLayout.svelte

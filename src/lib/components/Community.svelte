@@ -232,18 +232,13 @@
           <h3 class="text-xl font-semibold text-gray-300">Chat & Connect</h3>
         </div>
         <div class="p-6 flex-grow flex flex-col">
-          <div class="w-full flex justify-center scale-150">
+          <div class="w-full flex justify-center scale-150 py-4">
             <Slack />
           </div>
           <p class="mb-6 text-gray-300">
             Join us on the CNCF Slack in the <strong>#hyperlight</strong> channel
             to ask questions, share ideas, or just hang out with the community.
           </p>
-          <div class="flex flex-col gap-4 items-center mb-6 scale-125">
-            <span class="font-medium text-gray-300"
-              ><strong>#hyperlight</strong> channel</span
-            >
-          </div>
           <div class="mt-auto">
             <a
               href="https://slack.cncf.io/"

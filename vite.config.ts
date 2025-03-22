@@ -30,6 +30,7 @@ const config = defineConfig({
         navbar,
         sidebar,
         github: "https://github.com/hyperlight-dev/hyperlight",
+        discord: "https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ",
         logo: "/hyperlight.svg",
         // highlighter: {
         //   twoslash: true,
