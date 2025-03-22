@@ -22,7 +22,7 @@ This project is composed internally of several internal components, depicted in 
 
 ![Hyperlight architecture](../assets/hyperlight_arch.png)
 
-## Further reading
+<!-- ## Further reading
 
 * [Glossary](./glossary.md)
 * [How code gets executed in a VM](./hyperlight-execution-details.md)
@@ -41,4 +41,4 @@ This project is composed internally of several internal components, depicted in 
 * [Benchmarking Hyperlight](./benchmarking-hyperlight.md)
 * [Hyperlight Surrogate Development Notes](./hyperlight-surrogate-development-notes.md)
 * [Debugging Hyperlight](./debugging-hyperlight.md)
-* [Signal Handling in Hyperlight](./signal-handlers-development-notes.md)
+* [Signal Handling in Hyperlight](./signal-handlers-development-notes.md) -->
