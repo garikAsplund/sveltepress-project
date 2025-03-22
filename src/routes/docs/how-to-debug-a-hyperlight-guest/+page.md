@@ -94,7 +94,7 @@ To replicate the above behavior using VSCode follow the below steps:
     2. install the [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb) extension in VSCode to add debugging capabilities
 - create a `.vscode/launch.json` file in the project directory with the below content:
   
-    ```json
+    ```js
     {
         "version": "0.2.0",
         "configurations": [
