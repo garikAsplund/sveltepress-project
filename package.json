@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@number-flow/svelte": "^0.3.5",
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "flubber": "^0.4.2",
     "lite-youtube-embed": "^0.3.3",
