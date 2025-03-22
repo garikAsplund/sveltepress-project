@@ -70,6 +70,5 @@
       locales="en-US"
       {format}
     />
-	<!-- {starCount} -->
   </div>
 </a>
