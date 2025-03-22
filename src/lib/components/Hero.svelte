@@ -107,8 +107,36 @@
           </div>
         </div>
 
-        <!-- Terminal visualization -->
-        <div class="opacity-75 lg:w-2/5 md:translate-y-24 w-full max-w-xs sm:max-w-sm mx-auto md:mx-0">
+        <!-- Terminal visualization with responsive design for both mobile and desktop -->
+        <div
+          class="opacity-75 w-full lg:w-2/5 md:translate-y-24 hidden md:block"
+        >
+          <div
+            class="h-48 lg:h-56 overflow-hidden rounded-lg border border-slate-700 bg-slate-800 shadow-2xl w-96 lg:w-full"
+          >
+            <div class="flex items-center space-x-2 bg-slate-700 px-4 py-2">
+              <div class="h-3 w-3 rounded-full bg-gray-500"></div>
+              <div class="h-3 w-3 rounded-full bg-gray-400"></div>
+              <div class="h-3 w-3 rounded-full bg-gray-300"></div>
+              <div class="ml-2 text-xs text-slate-300"></div>
+            </div>
+            <div class="p-4 lg:p-6 font-mono text-sm lg:text-base relative">
+              <p class="text-emerald-400">
+                <span>$</span>
+                {@html terminalText}<span class="animate-pulse">█</span>
+              </p>
+              <p
+                class="text-emerald-400 blur-md opacity-55 absolute top-0 left-0 mt-4 ml-4 lg:mt-6 lg:ml-6"
+              >
+                <span>$</span>
+                {@html terminalText}<span class="animate-pulse">█</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile-optimized terminal (shown only on small screens) -->
+        <div class="opacity-75 w-full md:hidden mt-8">
           <div
             class="h-36 overflow-hidden rounded-lg border border-slate-700 bg-slate-800 shadow-2xl w-full"
           >
@@ -133,10 +161,10 @@
           </div>
         </div>
       </div>
-
-      <!-- Tags/Badges -->
+      
+      <!-- Tags/Badges - MOVED OUTSIDE the flex container but still inside the main wrapper -->
       <div
-        class="flex flex-wrap justify-center gap-4 py-16"
+        class="flex flex-wrap justify-center gap-4 py-16 mt-4"
         style="transition: opacity 600ms ease-in-out; transition-delay: 300ms;"
         class:opacity-0={!visible}
         class:opacity-100={visible}

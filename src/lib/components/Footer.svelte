@@ -6,10 +6,11 @@
 <footer
 	class="bottom-0 mt-auto flex w-full flex-col justify-end bg-gradient-to-b from-transparent to-purple-600/30 backdrop-blur-sm"
 >
-	<div class="container mx-auto px-4 box-border" style="max-width: 100vw;">
-		<div class="flex flex-col items-center justify-between gap-8 pt-12 md:flex-row">
-			<div class="flex flex-col items-center gap-8 md:items-start md:gap-4 max-w-full">
-				<p class="text-center text-sm font-medium text-white/90 " style="word-break: break-word; max-width: 100%;">
+	<!-- Original footer from the first image that worked on desktop -->
+	<div class="hidden md:block container mx-auto px-4">
+		<div class="flex flex-row items-center justify-between gap-8 pt-12">
+			<div class="flex flex-col items-start gap-4">
+				<p class="text-sm font-medium text-white/90">
 					We are a <span class="font-semibold text-white">Cloud Native Computing Foundation</span> sandbox
 					project.
 				</p>
@@ -26,10 +27,45 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col items-center gap-4 md:items-end w-full md:w-auto">
-				<!-- Modified this section for better mobile alignment -->
+			<div class="flex flex-col items-end gap-4">
+				<div class="flex items-end h-12 gap-6">
+					<a
+						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-white/80 transition-all duration-200 hover:opacity-85"
+						aria-label="Join our Slack"
+					>
+						<Slack />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile-only version with fixes -->
+	<div class="block md:hidden container mx-auto px-4 box-border" style="max-width: 100vw;">
+		<div class="flex flex-col items-center justify-between gap-8 pt-12">
+			<div class="flex flex-col items-center gap-8 max-w-full">
+				<p class="text-center text-sm font-medium text-white/90" style="word-break: break-word; max-width: 100%;">
+					We are a <span class="font-semibold text-white">Cloud Native Computing Foundation</span> sandbox
+					project.
+				</p>
+				<div class="h-12 w-auto">
+					<a
+						href="https://www.cncf.io/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block transition-all duration-200 hover:opacity-80"
+						aria-label="CNCF Website"
+					>
+						<CNCF_logo_white />
+					</a>
+				</div>
+			</div>
+
+			<div class="flex flex-col items-center gap-4 w-full">
 				<div class="flex items-center justify-center h-12 gap-6 mb-4">
-					
 					<a
 						href="https://join.slack.com/t/hyperlightgroup/shared_invite/zt-2ytby88df-B_S36BsRiOHEUesjf5fFaQ"
 						target="_blank"
