@@ -49,7 +49,7 @@ However, because we have only one PDPT4E and only one PDPT4E, bits 47:30 must al
 
 A diagram to describe how a linear (virtual) address is translated to physical address inside a Hyperlight VM:
 
-![A diagram to describe how a linear (virtual) address is translated to physical](../assets/linear-address-translation.png)
+![A diagram to describe how a linear (virtual) address is translated to physical](../../assets/linear-address-translation.png)
 
 Diagram is taken from "The Intel® 64 and IA-32 Architectures Software Developer’s Manual, Volume 3A: System Programming Guide"
 

@@ -20,6 +20,45 @@ index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b266
      font-family:
        'Inter var experimental',
        'Inter var',
+diff --git a/dist/components/NavItem.svelte b/dist/components/NavItem.svelte
+index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..78dfca63d2957e0e3afceb43bce5e60019a2bce7 100644
+--- a/dist/components/NavItem.svelte
++++ b/dist/components/NavItem.svelte
+@@ -4,6 +4,7 @@
+   // eslint-disable-next-line import/no-self-import
+   import Self from './NavItem.svelte'
+   import { getPathFromBase } from './utils'
++  import { page } from '$app/stores'
+ 
+   /**
+    * @typedef {object} Props
+@@ -28,6 +29,8 @@
+     ...rest
+   } = $props()
+ 
++  const routeId = $derived($page.route.id);
++
+   // eslint-disable-next-line no-unused-expressions
+   rest
+ </script>
+@@ -63,6 +66,7 @@
+     class="nav-item"
+     {...external ? { target: '_blank' } : {}}
+     aria-label={title}
++    class:nav-item-active={routeId.startsWith(to)}
+   >
+     {#if children}{@render children()}{:else}
+       {#if typeof icon === 'string'}
+@@ -79,6 +83,9 @@
+ {/if}
+ 
+ <style>
++  .nav-item-active {
++    --at-apply: 'border-b-1 font-bold';
++  }
+   .nav-item {
+     --at-apply: 'flex items-center cursor-pointer position-relative z-1 cursor-pointer decoration-none px-3';
+   }
 diff --git a/dist/components/Navbar.svelte b/dist/components/Navbar.svelte
 index dd7db439070a656c38940aab34484a969139e1d2..8bd4bfee33948614fd42bf346666e77ff6015b61 100644
 --- a/dist/components/Navbar.svelte
@@ -164,9 +203,21 @@ index dd7db439070a656c38940aab34484a969139e1d2..8bd4bfee33948614fd42bf346666e77f
    }
  </style>
 diff --git a/dist/components/PageLayout.svelte b/dist/components/PageLayout.svelte
-index cca43bac6be4866cd0b34998e073a6584e015ba9..d0e804b4f335c8f7ce6c3cc93afb0d447712adef 100644
+index cca43bac6be4866cd0b34998e073a6584e015ba9..a958f074b26bcc081a423f558bee17a9b3e3187c 100644
 --- a/dist/components/PageLayout.svelte
 +++ b/dist/components/PageLayout.svelte
+@@ -94,9 +94,9 @@
+     transform: translate(-100%, -50%);
+   }
+ 
+-  :global(.theme-default--page-layout h2 .svp-title-anchor) {
++  /* :global(.theme-default--page-layout h2 .svp-title-anchor) {
+     transform: translate(-100%, calc((-100% + 1rem) / 2));
+-  }
++  } */
+   :global(.theme-default--page-layout h1),
+   :global(.theme-default--page-layout h2),
+   :global(.theme-default--page-layout h3),
 @@ -106,7 +106,7 @@
      --at-apply: 'relative';
    }
@@ -256,10 +307,10 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf
    }
  </style>
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
-index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368d3cbf87e 100644
+index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..d4c3aa20548b85e204df13bd8fa8c0233697230b 100644
 --- a/dist/components/ToggleDark.svelte
 +++ b/dist/components/ToggleDark.svelte
-@@ -1,77 +1,87 @@
+@@ -1,77 +1,88 @@
  <script>
 -  import { onMount, tick } from 'svelte'
 -  import themeOptions from 'virtual:sveltepress/theme-default'
@@ -270,13 +321,14 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368
 +  import themeOptions from "virtual:sveltepress/theme-default";
 +  import Moon from "./icons/Moon.svelte";
 +  import Sun from "./icons/Sun.svelte";
+ 
+-  const key = 'SVELTEPRESS_DARK_MODE'
 +  import { isDark } from "./layout";
 +  import { page } from "$app/stores";
  
--  const key = 'SVELTEPRESS_DARK_MODE'
-+  const key = "SVELTEPRESS_DARK_MODE";
- 
 -  const themeColor = themeOptions.themeColor || { light: '#fff', dark: '#000' }
++  const key = "SVELTEPRESS_DARK_MODE";
++
 +  const themeColor = themeOptions.themeColor || { light: "#fff", dark: "#000" };
    function addOrRemoveClass() {
      if ($isDark) {
@@ -373,7 +425,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368
 +  });
 +  $effect(() => {
 +    const isHomePage = $page.url.pathname === "/";
-+    
++
 +    if (isHomePage) {
 +      $isDark = true;
 +      localStorage.setItem(key, "on");
@@ -383,7 +435,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368
  </script>
  
  <!-- eslint-disable no-template-curly-in-string -->
-@@ -80,11 +90,11 @@
+@@ -80,11 +91,11 @@
    <meta
      id="theme-color"
      name="theme-color"
@@ -397,7 +449,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368
    const themeColor = JSON.parse('${JSON.stringify(themeColor)}')
    if (window.localStorage.getItem('${key}') === 'on') {
      document.querySelector('html').classList.add('dark')
-@@ -94,26 +104,26 @@
+@@ -94,26 +105,28 @@
      document.querySelector('html').classList.remove('dark')
      document.getElementById('theme-color').setAttribute('content', themeColor ? themeColor.light : '#ffffff')
    }
@@ -405,35 +457,26 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..274ca6827842ffe0a68a8d17eefe7368
 +</${"script"}>`}
  </svelte:head>
 -
--<div
+ <div
 -  class="toggle"
--  onclick={toggle}
--  onkeyup={toggle}
--  aria-label="Toggle dark mode"
--  role="button"
--  tabindex="0"
-->
--  {#if $isDark}
++  class="toggle h-5 w-5"
+   onclick={toggle}
+   onkeyup={toggle}
+   aria-label="Toggle dark mode"
+   role="button"
+   tabindex="0"
++  class:invisible={$page.url.pathname === "/"}
+ >
+   {#if $isDark}
 -    <Moon />
--  {:else}
++    <!-- <Moon /> -->
++    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+   {:else}
 -    <Sun />
--  {/if}
--</div>
-+  <div
-+    class="toggle"
-+    onclick={toggle}
-+    onkeyup={toggle}
-+    aria-label="Toggle dark mode"
-+    role="button"
-+    tabindex="0"
-+    class:invisible={$page.url.pathname === "/"}
-+  >
-+    {#if $isDark}
-+      <Moon />
-+    {:else}
-+      <Sun />
-+    {/if}
-+  </div>
++    <!-- <Sun /> -->
++    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+   {/if}
+ </div>
  
  <style>
    .toggle {

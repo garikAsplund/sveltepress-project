@@ -71,7 +71,7 @@
   </div>
 
   <div
-    class="w-full bg-cyan-600 relative overflow-hidden"
+    class="w-full bg-cyan-600 relative overflow-hidden py-4 sm:py-8 md:py-12"
     bind:this={containerDiv}
   >
     <!-- Flickering background that fills and overflows the container -->
@@ -90,11 +90,11 @@
 
     <!-- Centered image container -->
     <div
-      class="relative flex justify-center items-center h-auto min-h-[300px] md:min-h-[500px] py-4 md:py-8 z-10"
+      class="relative flex justify-center items-center h-auto min-h-[300px] md:min-h-[600px] md:py-8 z-10 "
     >
       <img
         src="Overview.webp"
-        class="w-[92%] sm:w-[85%] md:w-[80%] max-h-full z-10 object-contain"
+        class="w-[92%] sm:w-[85%] md:max-w-6xl max-h-full z-10 object-contain"
         alt="Overview of Hyperlight"
       />
     </div>

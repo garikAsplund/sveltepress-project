@@ -50,7 +50,7 @@
           <li class="flex items-start gap-2">
             <SunSnow />
             <span class="text-gray-200"
-              >MicroVMs can be started cold in isolation or warm from a pool</span
+              >Micro-VMs can be started cold in isolation or warm from a pool</span
             >
           </li>
           <li class="flex items-start gap-2">

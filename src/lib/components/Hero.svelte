@@ -6,8 +6,9 @@
   import GradualSpacing from "./UI/GradualSpacing.svelte";
 
   // Animation setup for the terminal typing effect
-  let terminalText = $state("cargo run --example hello-world<br>");
-  const finalText = "Hello, World! I am executing inside of a micro-VM :)";
+  let terminalText = $state("");
+  const typingText = "cargo run --example hello-world"
+  const finalText = "<br>Hello, World! I am executing inside of a micro-VM :)";
   let cursorIndex = 0;
   let typingInterval;
 
@@ -22,10 +23,17 @@
 
     // Start the typing animation
     typingInterval = setInterval(() => {
-      if (cursorIndex < finalText.length) {
-        terminalText += finalText[cursorIndex];
+      if (cursorIndex < typingText.length) {
+        terminalText += typingText[cursorIndex];
         cursorIndex++;
-      } else {
+      } else if (cursorIndex === typingText.length){
+        cursorIndex++;
+        setTimeout(() => {
+          terminalText += finalText;
+          cursorIndex += finalText.length - 1;
+        },500)  
+      }
+      else {
         clearInterval(typingInterval);
       }
     }, 50);
