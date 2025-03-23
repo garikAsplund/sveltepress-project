@@ -7,11 +7,11 @@ Hyperlight uses the [Criterion](https://bheisler.github.io/criterion.rs/book/ind
 1. Every time a branch gets a push
     - Compares the current branch benchmarking results to the "dev-latest" release (which is the most recent push to "main" branch). This is done as part of `dep_rust.yml`, which is invoked by `ValidatePullRequest.yml`. These benchmarks are for the developer to compare their branch to main, and the results can only be seen in the GitHub action logs, and nothing is saved. 
 
-    ```
+    ```rust
     sandboxes/create_sandbox
-                        time:   [33.803 ms 34.740 ms 35.763 ms]
-                        change: [+0.7173% +3.7017% +7.1346%] (p = 0.03 < 0.05)
-                        Change within noise threshold.*
+        time:   [33.803 ms 34.740 ms 35.763 ms]
+        change: [+0.7173% +3.7017% +7.1346%] (p = 0.03 < 0.05)
+        Change within noise threshold.*
     ```
    
 2. For each release
@@ -62,9 +62,9 @@ target/criterion/
 Note that it overwrote the previous `my_baseline` with the new result. But notably, there is a new `change` folder, which contains the benchmarking difference between the two runs. In addition, on stdout you'll also find a comparison to our previous `my_baseline` run.
 
 ```
-                        time:   [40.434 ms 40.777 ms 41.166 ms]
-                        change: [+0.0506% +1.1399% +2.2775%] (p = 0.06 > 0.05)
-                        No change in performance detected.
+    time:   [40.434 ms 40.777 ms 41.166 ms]
+    change: [+0.0506% +1.1399% +2.2775%] (p = 0.06 > 0.05)
+    No change in performance detected.
 Found 1 outliers among 100 measurements (1.00%)
 ```
 

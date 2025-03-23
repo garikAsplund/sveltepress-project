@@ -2,6 +2,15 @@ h1, h2, h3, h4, h5, h6, [id] {
   scroll-margin-top: 80px; /* Adjust this value to match your header height */
 }
 
+:not(pre) > code {
+  white-space: nowrap;
+}
+
+/* Allow code blocks to wrap normally */
+pre > code, pre code {
+  white-space: pre-wrap;
+}
+
 .major-mono-display-regular {
   font-family: "Major Mono Display", monospace;
   font-weight: 400;
