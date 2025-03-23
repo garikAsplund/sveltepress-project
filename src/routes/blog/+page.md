@@ -8,11 +8,10 @@ The Microsoft Azure Core Upstream team is excited to announce the Hyperlight pro
 
 In this post, we'll go deeper into the motivation behind creating Hyperlight, explain how Hyperlight works under the hood, and finally, go through a basic code example. Keep reading to learn more about Hyperlight. Or, if you want to jump right in and get started with Hyperlight, visit the project's [GitHub repositories](https://aka.ms/hyperlight-dev).
 
-> **Visit the Hyperlight repository on GitHub**
->
-> Try the sample of Hyperlight with Kernel-based Virtual Machine.
->
-> [Get started now](https://github.com/hyperlight-dev/hyperlight)
+:::info[Visit the Hyperlight repository on GitHub]
+Try the sample of Hyperlight with Kernel-based Virtual Machine.
+[Get started now](https://github.com/hyperlight-dev/hyperlight)
+:::
 
 ## Why fast and secure are hard
 

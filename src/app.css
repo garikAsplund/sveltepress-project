@@ -5,10 +5,17 @@ h1, h2, h3, h4, h5, h6, [id] {
 :not(pre) > code {
   white-space: nowrap;
 }
-
+pre code.language-ascii, pre code.ascii {
+  white-space: pre;
+  overflow-x: auto;
+}
 /* Allow code blocks to wrap normally */
 pre > code, pre code {
   white-space: pre-wrap;
+}
+
+.sidebar-group .link-wrapper a {
+  white-space: nowrap;
 }
 
 .major-mono-display-regular {

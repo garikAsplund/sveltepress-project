@@ -87,11 +87,10 @@ As a newly open-sourced project, Hyperlight is actively evolving and [has submit
 
 Get involved by exploring the repository, trying out the demo, and engaging with the Hyperlight community. Join our bi-weekly community meetings on Wednesdays at 9 AM PST to **connect with maintainers, share ideas, and collaborate on making Hyperlight even better**. [Put yourself or your questions on the agenda](https://aka.ms/hyperlight-agenda)!
 
-> **Microsoft Open Source**
->
-> Open Source enables Microsoft products and services to bring choice, technology, and community to our customers
->
-> [Get involved](https://opensource.microsoft.com/)
+:::info[Microsoft Open Source]
+Open Source enables Microsoft products and services to bring choice, technology, and community to our customers.
+[Get involved](https://opensource.microsoft.com/)
+:::
 
 ---
 

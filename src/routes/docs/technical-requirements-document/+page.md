@@ -30,7 +30,9 @@ As indicated in the previous "architecture" section, the two main components, th
 
 Until this point, we've been using "guest" as an abstract term to indicate some binary to be run inside a Hyperlight sandbox. Because Hyperlight sandboxes only provide a limited set of functionality, guests must be compiled against and linked to all APIs necessary for providing the functionality above. These APIs are provided by our rust or C hyperlight guest libraries.
 
-> While guests may compile against additional libraries (e.g. `libc`), they are not guaranteed to run inside a sandbox, and likely won't.
+:::caution
+While guests may compile against additional libraries (e.g. `libc`), they are not guaranteed to run inside a sandbox, and likely won't.
+:::
 
 The Hyperlight sandbox deliberately provides a very limited set of functionality to guest binaries. We expect the most useful guests will execute code inside language interpreters or bytecode-level virtual machines, including Wasm VMs (e.g., [wasmtime](https://github.com/bytecodealliance/wasmtime)). Via this abstraction, we aim to provide functionality the "raw" Hyperlight sandbox does not provide directly. Any further functionality a given guest cannot provide can be provided via host functions.
 

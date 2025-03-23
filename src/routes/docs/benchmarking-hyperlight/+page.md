@@ -1,4 +1,6 @@
-# Benchmark Notes
+---
+title: Benchmark Notes
+---
 
 Hyperlight uses the [Criterion](https://bheisler.github.io/criterion.rs/book/index.html) framework to run and analyze benchmarks. A benefit to this framework is that it doesn't require the nightly toolchain.
 
@@ -68,7 +70,9 @@ Note that it overwrote the previous `my_baseline` with the new result. But notab
 Found 1 outliers among 100 measurements (1.00%)
 ```
 
-**Note** that Criterion does not differ between release and debug/dev benchmark results, so it's up to the developer to make sure baselines of the same config are compared.
+:::note[Note]
+Criterion does not differ between release and debug/dev benchmark results, so it's up to the developer to make sure baselines of the same config are compared.
+:::
 
 ## Running benchmarks locally
 

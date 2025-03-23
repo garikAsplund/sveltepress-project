@@ -306,7 +306,7 @@ index 14ec375c1fbf2cf2794f2b0e0e1926c683842f06..863de42334e4ec75069d8b82f023279f
    .right .title {
      --at-apply: 'justify-end';
 diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
-index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3d0103d7d 100644
+index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..ba4d8bdfaf26f541938cebcf9f2144d66848a7d1 100644
 --- a/dist/components/Sidebar.svelte
 +++ b/dist/components/Sidebar.svelte
 @@ -1,16 +1,21 @@
@@ -368,11 +368,11 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3
    }
    .theme-default-sidebar {
 -    --at-apply: 'fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none';
-+    --at-apply: "fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] lg:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none";
++    --at-apply: "fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none";
    }
    .sidebar-logo {
 -    --at-apply: 'sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7';
-+    --at-apply: "sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7";
++    --at-apply: "sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7 z-50";
    }
    .collapsed {
 -    --at-apply: 'sm:translate-x-0';
@@ -385,7 +385,7 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3
    }
  </style>
 diff --git a/dist/components/SidebarGroup.svelte b/dist/components/SidebarGroup.svelte
-index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..8e72abee2c1e97c158db442bddda0534748b64cf 100644
+index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..ce706b5b369d664ba0036abd3fb5e8d57d9d9b32 100644
 --- a/dist/components/SidebarGroup.svelte
 +++ b/dist/components/SidebarGroup.svelte
 @@ -1,14 +1,12 @@
@@ -479,7 +479,7 @@ index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..8e72abee2c1e97c158db442bddda0534
  
  <style>
 +  .link-wrapper {
-+    --at-apply: "relative px-4";
++    --at-apply: "relative pl-2 pr-3";
 +  }
 +  .active-indicator {
 +    --at-apply: "absolute left-0 top-0 bottom-0 w-[3px] bg-svp-primary dark:bg-svp-hover h-full";
