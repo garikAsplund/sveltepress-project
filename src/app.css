@@ -1,7 +1,5 @@
-/* @import "tailwindcss"; */
-/* @plugin "@tailwindcss/typography"; */
-:root {
-  scroll-padding-top: 80px; /* header height (60px) + 20px extra padding */
+h1, h2, h3, h4, h5, h6, [id] {
+  scroll-margin-top: 80px; /* Adjust this value to match your header height */
 }
 
 .major-mono-display-regular {

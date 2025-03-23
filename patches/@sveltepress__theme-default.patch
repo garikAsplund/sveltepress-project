@@ -20,6 +20,18 @@ index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b266
      font-family:
        'Inter var experimental',
        'Inter var',
+diff --git a/dist/components/Link.svelte b/dist/components/Link.svelte
+index 94abd904d1741bd1ec2f14ea0808806bce40e9cf..491d6a676e796b62eddbfe3d94c6cce518393e5b 100644
+--- a/dist/components/Link.svelte
++++ b/dist/components/Link.svelte
+@@ -66,6 +66,6 @@
+     --at-apply: 'flex';
+   }
+   .active {
+-    --at-apply: 'svp-gradient-text hover:svp-gradient-text cursor-default';
++    --at-apply: 'text-svp-primary hover:text-svp-hover font-bold cursor-default';
+   }
+ </style>
 diff --git a/dist/components/NavItem.svelte b/dist/components/NavItem.svelte
 index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..78dfca63d2957e0e3afceb43bce5e60019a2bce7 100644
 --- a/dist/components/NavItem.svelte
@@ -228,7 +240,7 @@ index cca43bac6be4866cd0b34998e073a6584e015ba9..a958f074b26bcc081a423f558bee17a9
    :global(.theme-default--page-layout h1:hover .svp-title-anchor),
    :global(.theme-default--page-layout h2:hover .svp-title-anchor),
 diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
-index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf43260b07 100644
+index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3d0103d7d 100644
 --- a/dist/components/Sidebar.svelte
 +++ b/dist/components/Sidebar.svelte
 @@ -1,16 +1,21 @@
@@ -290,7 +302,7 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf
    }
    .theme-default-sidebar {
 -    --at-apply: 'fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none';
-+    --at-apply: "fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] md:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none";
++    --at-apply: "fixed top-0 left-0 bottom-0 pr-6 pb-4 sm:pb-32 overflow-y-auto bg-light-6 dark:bg-dark-9 z-999 sm:w-[25vw] w-[70vw] pl-4 sm:pl-[5vw] lg:pl-[10vw] box-border transition-transform transition-300 shadow-md sm:shadow-none";
    }
    .sidebar-logo {
 -    --at-apply: 'sm:h-[72px] flex items-center justify-between mb-4 py-4 sm:py-0 sticky top-0 bg-inherit border-b-solid border-b border-light-8 dark:border-b-gray-7';
@@ -304,6 +316,143 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf
    .close {
 -    --at-apply: 'text-5 flex items-center sm:hidden ml-4';
 +    --at-apply: "text-5 flex items-center sm:hidden ml-4";
+   }
+ </style>
+diff --git a/dist/components/SidebarGroup.svelte b/dist/components/SidebarGroup.svelte
+index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..ef746acdfedc5efce62209278d41ba0948fa2fea 100644
+--- a/dist/components/SidebarGroup.svelte
++++ b/dist/components/SidebarGroup.svelte
+@@ -1,14 +1,12 @@
+ <script>
+-  import { page } from '$app/stores'
+-  import { scale, slide } from 'svelte/transition'
+-  import ArrowDown from './icons/ArrowDown.svelte'
+-  import PointLeft from './icons/PointLeft.svelte'
+-  import Link from './Link.svelte'
++  import { page } from "$app/stores";
++  import { scale, slide } from "svelte/transition";
++  import ArrowDown from "./icons/ArrowDown.svelte";
++  import PointLeft from "./icons/PointLeft.svelte";
++  import Link from "./Link.svelte";
+   // eslint-disable-next-line import/no-self-import
+-  import SidebarGroup from './SidebarGroup.svelte'
+-
+-  const routeId = $derived($page.route.id)
+-
++  import SidebarGroup from "./SidebarGroup.svelte";
++  const routeId = $derived($page.route.id);
+   /**
+    * @typedef {object} Props
+    * @property {any} [items] - Sidebar items
+@@ -16,19 +14,16 @@
+    * @property {boolean} [collapsible] - Whether the sidebar is collapsible
+    * @property {boolean} [nested] - Whether the sidebar is nested
+    */
+-
+   /** @type {Props} */
+   const {
+     items = [],
+-    title = '',
++    title = "",
+     collapsible = false,
+     nested = false,
+-  } = $props()
+-
+-  let collapsed = $state(false)
+-
++  } = $props();
++  let collapsed = $state(false);
+   function handleToggle() {
+-    collapsed = !collapsed
++    collapsed = !collapsed;
+   }
+ </script>
+ 
+@@ -55,25 +50,27 @@
+   {#if !collapsed}
+     <div class="links" transition:slide>
+       {#each items as item}
+-        {@const active = routeId.endsWith('/')
++        {@const active = routeId.endsWith("/")
+           ? item.to === routeId
+           : item.to === `${routeId}/`}
++
+         {#if Array.isArray(item.items) && item.items.length}
+           <SidebarGroup {...item} nested />
+         {:else}
+-          <Link
+-            to={item.to}
+-            {active}
+-            label={item.title}
+-            inline={false}
+-            highlight={false}
+-          >
++          <div class="link-wrapper relative">
+             {#if active}
+-              <div transition:scale class="active-icon">
+-                <PointLeft />
+-              </div>
++              <div class="active-indicator"></div>
+             {/if}
+-          </Link>
++            <div class="w-full h-full">
++              <Link
++                to={item.to}
++                {active}
++                label={item.title}
++                inline={false}
++                highlight={false}
++              ></Link>
++            </div>
++          </div>
+         {/if}
+       {/each}
+     </div>
+@@ -81,31 +78,37 @@
+ </div>
+ 
+ <style>
++  .link-wrapper {
++    --at-apply: "relative px-4";
++  }
++  .active-indicator {
++    --at-apply: "absolute left-0 top-0 bottom-0 w-[3px] bg-svp-primary h-full";
++  }
+   .nested {
+-    --at-apply: 'pl-4';
++    --at-apply: "pl-4";
+   }
+   .with-mb {
+-    --at-apply: 'mb-2 sm:mb-4';
++    --at-apply: "mb-2 sm:mb-4";
+   }
+   .sidebar-group:not(:last-of-type) {
+-    --at-apply: 'border-b-solid border-b border-light-8 dark:border-b-gray-7 mb-4 pb-4';
++    --at-apply: "border-b-solid border-b border-light-8 dark:border-b-gray-7 mb-4 pb-4";
+   }
+   .group-title {
+-    --at-apply: 'font-bold text-slate-8 dark:text-slate-2 flex items-center justify-between';
++    --at-apply: "font-bold text-slate-8 dark:text-slate-2 flex items-center justify-between";
+   }
+   .links {
+-    --at-apply: 'leading-8 overflow-hidden';
++    --at-apply: "leading-8 overflow-hidden";
+   }
+   .collapse-control {
+-    --at-apply: 'transition transition-200 transition-bg transition-transform cursor-pointer text-5 hover:bg-gray-2 active:bg-gray-3 dark:hover:bg-gray-8 dark:active:bg-gray-7 w-[28px] h-[28px] flex items-center justify-center rounded';
++    --at-apply: "transition transition-200 transition-bg transition-transform cursor-pointer text-5 hover:bg-gray-2 active:bg-gray-3 dark:hover:bg-gray-8 dark:active:bg-gray-7 w-[28px] h-[28px] flex items-center justify-center rounded";
+   }
+   .arrow {
+-    --at-apply: 'flex items-center transition-300 transition-transform';
++    --at-apply: "flex items-center transition-300 transition-transform";
+   }
+   .collapsed {
+-    --at-apply: 'rotate--90';
++    --at-apply: "rotate--90";
+   }
+   .active-icon {
+-    --at-apply: 'text-svp-primary ml-4 flex items-center text-5';
++    --at-apply: "text-svp-primary ml-4 flex items-center text-5";
    }
  </style>
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte

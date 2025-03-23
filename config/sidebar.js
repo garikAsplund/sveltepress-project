@@ -20,27 +20,27 @@ export default {
       items: [
         {
           title: "Introduction",
-          to: "/docs/introduction",
+          to: "/docs/introduction/",
         },
         {
           title: "Execution Details",
-          to: "/docs/hyperlight-execution-details",
+          to: "/docs/hyperlight-execution-details/",
         },
         {
           title: "Metrics, Logs & Traces",
-          to: "/docs/hyperlight-metrics-logs-and-traces",
+          to: "/docs/hyperlight-metrics-logs-and-traces/",
         },
         {
           title: "Surrogate Development",
-          to: "/docs/hyperlight-surrogate-development-notes",
+          to: "/docs/hyperlight-surrogate-development-notes/",
         },
         {
           title: "Benchmarking",
-          to: "/docs/benchmarking-hyperlight",
+          to: "/docs/benchmarking-hyperlight/",
         },
         {
           title: "Debugging",
-          to: "/docs/debugging-hyperlight",
+          to: "/docs/debugging-hyperlight/",
         },
       ],
     },
@@ -50,19 +50,19 @@ export default {
       items: [
         {
           title: "Build a Guest Binary",
-          to: "/docs/how-to-build-a-hyperlight-guest-binary",
+          to: "/docs/how-to-build-a-hyperlight-guest-binary/",
         },
         {
           title: "Debug a Guest",
-          to: "/docs/how-to-debug-a-hyperlight-guest",
+          to: "/docs/how-to-debug-a-hyperlight-guest/",
         },
         {
           title: "Make Releases",
-          to: "/docs/how-to-make-releases",
+          to: "/docs/how-to-make-releases/",
         },
         {
           title: "Use Flatbuffers",
-          to: "/docs/how-to-use-flatbuffers",
+          to: "/docs/how-to-use-flatbuffers/",
         },
       ],
     },
@@ -72,11 +72,11 @@ export default {
       items: [
         {
           title: "Paging",
-          to: "/docs/paging-development-notes",
+          to: "/docs/paging-development-notes/",
         },
         {
           title: "Signal Handlers",
-          to: "/docs/signal-handlers-development-notes",
+          to: "/docs/signal-handlers-development-notes/",
         },
       ],
     },
@@ -86,11 +86,11 @@ export default {
       items: [
         {
           title: "Security Guidelines",
-          to: "/docs/security",
+          to: "/docs/security/",
         },
         {
           title: "Developer Guidance",
-          to: "/docs/security-guidance-for-developers",
+          to: "/docs/security-guidance-for-developers/",
         },
       ],
     },
@@ -100,11 +100,11 @@ export default {
       items: [
         {
           title: "Glossary",
-          to: "/docs/glossary",
+          to: "/docs/glossary/",
         },
         {
           title: "Technical Requirements",
-          to: "/docs/technical-requirements-document",
+          to: "/docs/technical-requirements-document/",
         },
       ],
     },
@@ -122,16 +122,16 @@ export default {
   "/blog": [
     {
       title: "Build a Hyperlight C guest to securely execute JavaScript",
-      to: "/blog/runJS",
+      to: "/blog/runJS/",
     },
     {
       title: "Achieving 0.0009-second micro-VM execution time",
-      to: "/blog/kubecon2024",
+      to: "/blog/kubecon2024/",
     },
     {
       title:
         "Introducing Hyperlight: Virtual machine-based security for functions at scale",
-      to: "/blog",
+      to: "/blog/",
     },
   ],
 };

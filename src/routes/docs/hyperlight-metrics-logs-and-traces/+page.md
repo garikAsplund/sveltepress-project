@@ -2,7 +2,7 @@
 
 Hyperlight provides the following observability features:
 
-* [Metrics](#metrics) are provided using Prometheus.
+* [Metrics](#metrics) are provided using [Prometheus](https://prometheus.io/).
 * [Logs](#logs) are provided using the Rust [log crate](https://docs.rs/log/0.4.6/log/), and can be consumed by any Rust logger implementation, including LogTracer which can be used to emit log records as tracing events.
 * [Tracing](#tracing) is provided using the Rust [tracing crate](https://docs.rs/tracing/0.1.37/tracing/), and can be consumed by any Rust tracing implementation. In addition, the [log feature](https://docs.rs/tracing/latest/tracing/#crate-feature-flags) is enabled which means that should a hyperlight host application not want to consume tracing events, you can still consume them as logs.
 
