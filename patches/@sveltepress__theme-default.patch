@@ -1,3 +1,29 @@
+diff --git a/dist/components/AjaxBar.svelte b/dist/components/AjaxBar.svelte
+index ee176ba90a9cec43298d0bbc66b15d46fe057d52..690f2c5995b926f21191070c2d58050489c4cf9a 100644
+--- a/dist/components/AjaxBar.svelte
++++ b/dist/components/AjaxBar.svelte
+@@ -49,7 +49,7 @@
+     --at-apply: fixed top-0 left-0 right-0 bottom-0 h-[3px] z-99999;
+   }
+   .progress {
+-    --at-apply: transition-width transition-100 bg-svp-primary h-full;
++    --at-apply: transition-width transition-100 bg-svp-primary dark:bg-svp-hover h-full;
+     width: var(--ajax-bar-width);
+   }
+ </style>
+diff --git a/dist/components/EditPage.svelte b/dist/components/EditPage.svelte
+index 319cda9d0f3d163e77accb762ad030c5c0bc1f5e..34fe46892cadc508e5444761a957b693701595ec 100644
+--- a/dist/components/EditPage.svelte
++++ b/dist/components/EditPage.svelte
+@@ -42,7 +42,7 @@
+ 
+ <style>
+   .edit-link {
+-    --at-apply: 'flex items-center text-svp-primary hover:text-svp-hover cursor-pointer';
++    --at-apply: 'flex items-center text-svp-primary dark:text-svp-hover hover:dark:text-svp-primary hover:text-svp-hover cursor-pointer';
+   }
+   .edit-icon {
+     --at-apply: 'text-5 flex items-center';
 diff --git a/dist/components/GlobalLayout.svelte b/dist/components/GlobalLayout.svelte
 index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b2661fea280e 100644
 --- a/dist/components/GlobalLayout.svelte
@@ -21,19 +47,30 @@ index 08b4b885ddc17a74dc1f1087a3f10473eb8957e3..6f146a2c94520049876c9f831516b266
        'Inter var experimental',
        'Inter var',
 diff --git a/dist/components/Link.svelte b/dist/components/Link.svelte
-index 94abd904d1741bd1ec2f14ea0808806bce40e9cf..491d6a676e796b62eddbfe3d94c6cce518393e5b 100644
+index 94abd904d1741bd1ec2f14ea0808806bce40e9cf..4d2034bf932ddec82124f9d9a658439bfc7503e3 100644
 --- a/dist/components/Link.svelte
 +++ b/dist/components/Link.svelte
-@@ -66,6 +66,6 @@
+@@ -57,15 +57,15 @@
+ 
+ <style>
+   .highlight {
+-    --at-apply: 'text-svp-primary';
++    --at-apply: 'text-svp-primary dark:text-svp-hover';
+   }
+   .link {
+-    --at-apply: 'inline-flex hover:text-svp-hover cursor-pointer items-center transition-200 transition-color';
++    --at-apply: 'inline-flex hover:text-svp-hover hover:dark:text-svp-primary cursor-pointer items-center transition-200 transition-color';
+   }
+   .link.no-inline {
      --at-apply: 'flex';
    }
    .active {
 -    --at-apply: 'svp-gradient-text hover:svp-gradient-text cursor-default';
-+    --at-apply: 'text-svp-primary hover:text-svp-hover font-bold cursor-default';
++    --at-apply: 'text-svp-primary dark:text-svp-hover hover:dark:text-svp-primary hover:text-svp-hover font-bold cursor-default';
    }
  </style>
 diff --git a/dist/components/NavItem.svelte b/dist/components/NavItem.svelte
-index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..78dfca63d2957e0e3afceb43bce5e60019a2bce7 100644
+index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..d68dd258ecf49114927853bb92aaf94adeb91498 100644
 --- a/dist/components/NavItem.svelte
 +++ b/dist/components/NavItem.svelte
 @@ -4,6 +4,7 @@
@@ -71,6 +108,15 @@ index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..78dfca63d2957e0e3afceb43bce5e600
    .nav-item {
      --at-apply: 'flex items-center cursor-pointer position-relative z-1 cursor-pointer decoration-none px-3';
    }
+@@ -109,7 +116,7 @@
+     transform: translateY(72px);
+   }
+   :global(.dropdown > .nav-item) {
+-    --at-apply: 'block py-2 px-4 decoration-none rounded hover:bg-svp-primary hover:bg-opacity-20 hover:text-svp-primary text-[#213547] dark:text-[#efefef]';
++    --at-apply: 'block py-2 px-4 decoration-none rounded hover:bg-svp-primary hover:bg-opacity-20 hover:text-svp-primary  text-[#213547] dark:text-[#efefef]';
+   }
+   :global(.dropdown > .nav-item:hover) {
+     background-image: none;
 diff --git a/dist/components/Navbar.svelte b/dist/components/Navbar.svelte
 index dd7db439070a656c38940aab34484a969139e1d2..8bd4bfee33948614fd42bf346666e77ff6015b61 100644
 --- a/dist/components/Navbar.svelte
@@ -239,6 +285,26 @@ index cca43bac6be4866cd0b34998e073a6584e015ba9..a958f074b26bcc081a423f558bee17a9
    }
    :global(.theme-default--page-layout h1:hover .svp-title-anchor),
    :global(.theme-default--page-layout h2:hover .svp-title-anchor),
+diff --git a/dist/components/PageSwitcher.svelte b/dist/components/PageSwitcher.svelte
+index 14ec375c1fbf2cf2794f2b0e0e1926c683842f06..863de42334e4ec75069d8b82f023279fb0ef61bc 100644
+--- a/dist/components/PageSwitcher.svelte
++++ b/dist/components/PageSwitcher.svelte
+@@ -66,13 +66,13 @@
+     --at-apply: 'grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 border-t-solid border-t border-light-7 dark:border-gray-7 pt-4 sm:pt-8 mt-4';
+   }
+   .switcher {
+-    --at-apply: 'border-solid border-1 border-light-7 dark:border-gray-7 rounded-lg flex-grow cursor-pointer hover:border-svp-primary transition-300 transition-colors';
++    --at-apply: 'border-solid border-1 border-light-7 dark:border-gray-7 rounded-lg flex-grow cursor-pointer hover:dark:border-svp-hover hover:border-svp-primary transition-300 transition-colors';
+   }
+   .hint {
+     --at-apply: 'text-gray-4 text-3';
+   }
+   .title {
+-    --at-apply: 'flex items-center text-svp-primary mt-3';
++    --at-apply: 'flex items-center text-svp-primary dark:text-svp-hover mt-3';
+   }
+   .right .title {
+     --at-apply: 'justify-end';
 diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
 index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3d0103d7d 100644
 --- a/dist/components/Sidebar.svelte
@@ -319,7 +385,7 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c284566a231623bc9535e0217603d1a3
    }
  </style>
 diff --git a/dist/components/SidebarGroup.svelte b/dist/components/SidebarGroup.svelte
-index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..ef746acdfedc5efce62209278d41ba0948fa2fea 100644
+index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..8e72abee2c1e97c158db442bddda0534748b64cf 100644
 --- a/dist/components/SidebarGroup.svelte
 +++ b/dist/components/SidebarGroup.svelte
 @@ -1,14 +1,12 @@
@@ -416,7 +482,7 @@ index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..ef746acdfedc5efce62209278d41ba09
 +    --at-apply: "relative px-4";
 +  }
 +  .active-indicator {
-+    --at-apply: "absolute left-0 top-0 bottom-0 w-[3px] bg-svp-primary h-full";
++    --at-apply: "absolute left-0 top-0 bottom-0 w-[3px] bg-svp-primary dark:bg-svp-hover h-full";
 +  }
    .nested {
 -    --at-apply: 'pl-4';
@@ -452,9 +518,22 @@ index 0737a948ea3c0d4339ca8c52f4998e7381ed385e..ef746acdfedc5efce62209278d41ba09
    }
    .active-icon {
 -    --at-apply: 'text-svp-primary ml-4 flex items-center text-5';
-+    --at-apply: "text-svp-primary ml-4 flex items-center text-5";
++    --at-apply: "text-svp-primary dark:text-svp-hover ml-4 flex items-center text-5";
    }
  </style>
+diff --git a/dist/components/Toc.svelte b/dist/components/Toc.svelte
+index 6bea1a3306f99cfa7a8aaea04f5f40ba66ed420b..8886620e4256d248f615dc5561732317f14a6455 100644
+--- a/dist/components/Toc.svelte
++++ b/dist/components/Toc.svelte
+@@ -114,7 +114,7 @@
+     content: ' ';
+   }
+   .active-bar {
+-    --at-apply: 'absolute z-2 left-0 h-[2em] border-l-[3px] border-l-solid border-svp-primary border-opacity-80 w-full transition-transform transition-300 top-0';
++    --at-apply: 'absolute z-2 left-0 h-[2em] border-l-[3px] border-l-solid border-svp-primary dark:border-svp-hover border-opacity-80 w-full transition-transform transition-300 top-0';
+     transform: translateY(var(--bar-top));
+   }
+   .collapsed {
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
 index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f67864e98 100644
 --- a/dist/components/ToggleDark.svelte
