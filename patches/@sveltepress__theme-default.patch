@@ -307,10 +307,10 @@ index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..c79fe11ac5e6b496ab9d4458493a2daf
    }
  </style>
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
-index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..d4c3aa20548b85e204df13bd8fa8c0233697230b 100644
+index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f67864e98 100644
 --- a/dist/components/ToggleDark.svelte
 +++ b/dist/components/ToggleDark.svelte
-@@ -1,77 +1,88 @@
+@@ -1,77 +1,90 @@
  <script>
 -  import { onMount, tick } from 'svelte'
 -  import themeOptions from 'virtual:sveltepress/theme-default'
@@ -428,14 +428,16 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..d4c3aa20548b85e204df13bd8fa8c023
 +
 +    if (isHomePage) {
 +      $isDark = true;
-+      localStorage.setItem(key, "on");
++      addOrRemoveClass();
++    } else {
++      $isDark = localStorage.getItem(key) === "on";
 +      addOrRemoveClass();
 +    }
 +  });
  </script>
  
  <!-- eslint-disable no-template-curly-in-string -->
-@@ -80,11 +91,11 @@
+@@ -80,11 +93,11 @@
    <meta
      id="theme-color"
      name="theme-color"
@@ -449,7 +451,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..d4c3aa20548b85e204df13bd8fa8c023
    const themeColor = JSON.parse('${JSON.stringify(themeColor)}')
    if (window.localStorage.getItem('${key}') === 'on') {
      document.querySelector('html').classList.add('dark')
-@@ -94,26 +105,28 @@
+@@ -94,26 +107,58 @@
      document.querySelector('html').classList.remove('dark')
      document.getElementById('theme-color').setAttribute('content', themeColor ? themeColor.light : '#ffffff')
    }
@@ -470,11 +472,41 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..d4c3aa20548b85e204df13bd8fa8c023
    {#if $isDark}
 -    <Moon />
 +    <!-- <Moon /> -->
-+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
++    <svg
++      xmlns="http://www.w3.org/2000/svg"
++      width="24"
++      height="24"
++      viewBox="0 0 24 24"
++      fill="none"
++      stroke="currentColor"
++      stroke-width="2"
++      stroke-linecap="round"
++      stroke-linejoin="round"
++      class="lucide lucide-moon"
++      ><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg
++    >
    {:else}
 -    <Sun />
 +    <!-- <Sun /> -->
-+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
++    <svg
++      xmlns="http://www.w3.org/2000/svg"
++      width="24"
++      height="24"
++      viewBox="0 0 24 24"
++      fill="none"
++      stroke="currentColor"
++      stroke-width="2"
++      stroke-linecap="round"
++      stroke-linejoin="round"
++      class="lucide lucide-sun"
++      ><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path
++        d="M12 20v2"
++      /><path d="m4.93 4.93 1.41 1.41" /><path
++        d="m17.66 17.66 1.41 1.41"
++      /><path d="M2 12h2" /><path d="M20 12h2" /><path
++        d="m6.34 17.66-1.41 1.41"
++      /><path d="m19.07 4.93-1.41 1.41" /></svg
++    >
    {/if}
  </div>
  

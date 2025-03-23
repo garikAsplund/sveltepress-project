@@ -1,7 +1,7 @@
 export default [
     {
       title: "Documentation",
-      to: "/docs/introduction",
+      to: "/docs",
     },
     {
       title: "Blog",
