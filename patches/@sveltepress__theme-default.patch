@@ -70,7 +70,7 @@ index 94abd904d1741bd1ec2f14ea0808806bce40e9cf..4d2034bf932ddec82124f9d9a658439b
    }
  </style>
 diff --git a/dist/components/NavItem.svelte b/dist/components/NavItem.svelte
-index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..d68dd258ecf49114927853bb92aaf94adeb91498 100644
+index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..ead4aaa3e59349efb75ef6160dfddcdc758c25aa 100644
 --- a/dist/components/NavItem.svelte
 +++ b/dist/components/NavItem.svelte
 @@ -4,6 +4,7 @@
@@ -108,7 +108,15 @@ index 1bf2da3c28a07d2af69c4de066ec3e2c0e5b3146..d68dd258ecf49114927853bb92aaf94a
    .nav-item {
      --at-apply: 'flex items-center cursor-pointer position-relative z-1 cursor-pointer decoration-none px-3';
    }
-@@ -109,7 +116,7 @@
+@@ -102,14 +109,14 @@
+     --at-apply: 'opacity-80';
+   }
+   :global(:not(.dropdown) > .nav-item:not(.nav-item--icon):hover) {
+-    --at-apply: 'svp-gradient-text';
++    --at-apply: 'dark:text-svp-hover text-svp-primary';
+   }
+   .dropdown {
+     --at-apply: 'transition-transform transition-opacity transition-300 opacity-0 pointer-events-none  absolute top-0 right-0 bg-white dark:bg-[#232323] whitespace-nowrap z-3 rounded shadow-sm p-2';
      transform: translateY(72px);
    }
    :global(.dropdown > .nav-item) {
@@ -745,7 +753,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f
    }
  </style>
 diff --git a/dist/style.css b/dist/style.css
-index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..b2129c25fd25349e8b3a4af98452509656f85bee 100644
+index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..e03fcd252e9231967cb0ef3b323a896beefb5d1f 100644
 --- a/dist/style.css
 +++ b/dist/style.css
 @@ -2,7 +2,7 @@
@@ -753,15 +761,15 @@ index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..b2129c25fd25349e8b3a4af984525096
    --svp-expansion-bg-darker: #f2f2f7;
    --svp-expansion-bg-darker2: #e8e8f2;
 -  --docsearch-primary-color: rgba(251, 113, 133, 1);
-+  --docsearch-primary-color: rgb(246, 113, 251);
++  --docsearch-primary-color: var(--svp-text-hover);
    --svp-code-font: 'Dank Mono', Consolas, 'Courier New', Courier, monospace;
    --docsearch-searchbox-background: transparent;
    --docsearch-logo-color: var(--docsearch-primary-color);
 diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
-index 41367a0c981398e30f2a47bd5d13551acc6704a0..3961fa8449109d2dfabe1105656599a119dc5825 100644
+index 41367a0c981398e30f2a47bd5d13551acc6704a0..0bb4aa35ff296b1681bce140a060bfb30bc9833d 100644
 --- a/dist/vite-plugins/create-pre-core-plugins.js
 +++ b/dist/vite-plugins/create-pre-core-plugins.js
-@@ -49,13 +49,14 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+@@ -49,13 +49,16 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
  import Unocss from 'unocss/vite';
  import { SERVICE_WORKER_PATH } from '../constants.js';
  import { initHighlighter } from '../markdown/highlighter.js';
@@ -775,12 +783,14 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..3961fa8449109d2dfabe1105656599a1
  };
 -var DEFAULT_PRIMARY = '#fb7185';
 -var DEFAULT_HOVER = '#f43f5e';
-+var DEFAULT_PRIMARY = '#00838f';
-+var DEFAULT_HOVER = '#00b8c2';
++// var DEFAULT_PRIMARY = '#00838f';
++// var DEFAULT_HOVER = '#00b8c2';
++var DEFAULT_PRIMARY = '#D8B4FE';
++var DEFAULT_HOVER = '#818CF8';
  function getIconSafelist(themeOptions) {
      var icons = themeOptions === null || themeOptions === void 0 ? void 0 : themeOptions.preBuildIconifyIcons;
      if (!icons)
-@@ -92,6 +93,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+@@ -92,6 +95,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
                          presets: [
                              presetUno(),
                              presetIcons(),
@@ -788,7 +798,7 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..3961fa8449109d2dfabe1105656599a1
                          ],
                          transformers: [transformerDirectives()],
                          theme: {
-@@ -109,7 +111,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+@@ -109,7 +113,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
                          shortcuts: {
                              'svp-gradient-bg': "bg-gradient-linear bg-gradient-[45deg,".concat(gradient.start, ",").concat(gradient.end, "]"),
                              'svp-gradient-text': 'svp-gradient-bg bg-clip-text text-transparent',

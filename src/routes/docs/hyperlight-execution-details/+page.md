@@ -11,11 +11,11 @@ A very rough contrast between Hyperlight's offerings and other platforms is as f
 | Feature                                                                 | Hyperlight | Other platforms    |
 |-------------------------------------------------------------------------|------------|--------------------|
 | Hardware isolation (vCPU, virtual memory)                               | Yes        | Yes                |
-| Shared memory between host and in-VM process                            | Yes        | Yes <sup>[2]</sup> |
+| Shared memory between host and in-VM process                            | Yes        | Yes <sup>[^2]</sup> |
 | Lightweight function calls between host and in-VM process (the "guest") | Yes        | No                 |
-| Bootloader/OS kernel                                                    | No         | Yes <sup>[1]</sup> |
-| Virtual networking                                                      | No         | Yes <sup>[2]</sup> |
-| Virtual filesystem                                                      | No         | Yes <sup>[1]</sup> |
+| Bootloader/OS kernel                                                    | No         | Yes <sup>[^1]</sup> |
+| Virtual networking                                                      | No         | Yes <sup>[^2]</sup> |
+| Virtual filesystem                                                      | No         | Yes <sup>[^1]</sup> |
 
 
 As seen in this table, Hyperlight offers little more than a CPU and memory. We've removed every feature we could, while still providing a machine on which arbitrary code can execute, so we can achieve our various use cases and efficiency targets.
@@ -37,6 +37,6 @@ At the highest level, Hyperlight takes roughly the following steps to create and
 
 ---
 
-_<sup>[1]</sup> nearly universal support_
+[^1]: Nearly universal support
 
-_<sup>[2]</sup> varied support_
+[^2]: Varied support
