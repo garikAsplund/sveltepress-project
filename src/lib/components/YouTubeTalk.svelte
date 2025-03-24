@@ -39,12 +39,12 @@
 
       <!-- RIGHT COLUMN: Text content (no background) -->
       <div class="rounded-lg p-8">
-        <h2 class="text-3xl font-bold text-white mb-2">
+        <h3 class="text-3xl font-bold text-white mb-2">
           KubeCon North America 2024
-        </h2>
-        <h3 class="text-xl text-blue-300 mb-6">
-          Microsoft's Rita Zhang introduces Hyperlight
         </h3>
+        <h4 class="text-xl text-blue-300 mb-6">
+          Microsoft's Rita Zhang introduces Hyperlight
+        </h4>
 
         <ul class="space-y-4 text-base">
           <li class="flex items-start gap-2">

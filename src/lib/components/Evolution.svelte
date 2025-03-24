@@ -170,7 +170,7 @@
         >
           <Vm />
         </div>
-        <h2 class="text-white mt-4 text-xl font-medium">{cards[0].title}</h2>
+        <h3 class="text-white mt-4 text-xl font-medium">{cards[0].title}</h3>
       </div>
 
       <!-- First arrow -->
@@ -202,7 +202,7 @@
         >
           <Container />
         </div>
-        <h2 class="text-white mt-4 text-xl font-medium">{cards[1].title}</h2>
+        <h3 class="text-white mt-4 text-xl font-medium">{cards[1].title}</h3>
       </div>
 
       <!-- Second arrow -->
@@ -238,11 +238,11 @@
           <div class="flex">
             <Sandbox /><Sandbox /><Sandbox />
           </div>
-          <div class="flex">
+          <div class="flex">`
             <Sandbox /><Sandbox /><Sandbox />
           </div>
         </div>
-        <h2 class="text-white mt-4 text-xl font-medium">{cards[2].title}</h2>
+        <h3 class="text-white mt-4 text-xl font-medium">{cards[2].title}</h3>
       </div>
     </div>
   </div>
