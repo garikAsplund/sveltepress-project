@@ -543,7 +543,7 @@ index 6bea1a3306f99cfa7a8aaea04f5f40ba66ed420b..8886620e4256d248f615dc5561732317
    }
    .collapsed {
 diff --git a/dist/components/ToggleDark.svelte b/dist/components/ToggleDark.svelte
-index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f67864e98 100644
+index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..6e9b47805dc50eaa3471a42cdf644ff05b02a7d2 100644
 --- a/dist/components/ToggleDark.svelte
 +++ b/dist/components/ToggleDark.svelte
 @@ -1,77 +1,90 @@
@@ -592,65 +592,83 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f
  
    function toggle(evt) {
 -    localStorage.setItem(key, $isDark ? 'off' : 'on')
-+    localStorage.setItem(key, $isDark ? "off" : "on");
-     const isAppearanceTransition =
-       document.startViewTransition &&
+-    const isAppearanceTransition =
+-      document.startViewTransition &&
 -      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
++    localStorage.setItem(key, $isDark ? "off" : "on");
++    // const isAppearanceTransition =
++    //   document.startViewTransition &&
++    //   !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  
-     if (!isAppearanceTransition) {
+-    if (!isAppearanceTransition) {
 -      $isDark = !$isDark
 -      addOrRemoveClass()
 -      return
+-    }
++    // if (!isAppearanceTransition) {
 +      $isDark = !$isDark;
 +      addOrRemoveClass();
-+      return;
-     }
++      // return;
++    // }
  
 -    const x = evt.clientX
 -    const y = evt.clientY
-+    const x = evt.clientX;
-+    const y = evt.clientY;
-     const endRadius = Math.hypot(
-       Math.max(x, window.innerWidth - x),
+-    const endRadius = Math.hypot(
+-      Math.max(x, window.innerWidth - x),
 -      Math.max(y, window.innerHeight - y),
 -    )
-+      Math.max(y, window.innerHeight - y)
-+    );
-     const transition = document.startViewTransition(async () => {
+-    const transition = document.startViewTransition(async () => {
 -      $isDark = !$isDark
 -      await tick()
 -      addOrRemoveClass()
 -    })
-+      $isDark = !$isDark;
-+      await tick();
-+      addOrRemoveClass();
-+    });
-     transition.ready.then(() => {
-       const clipPath = [
-         `circle(0px at ${x}px ${y}px)`,
-         `circle(${endRadius}px at ${x}px ${y}px)`,
+-    transition.ready.then(() => {
+-      const clipPath = [
+-        `circle(0px at ${x}px ${y}px)`,
+-        `circle(${endRadius}px at ${x}px ${y}px)`,
 -      ]
-+      ];
-       document.documentElement.animate(
-         {
-           clipPath: $isDark ? [...clipPath].reverse() : clipPath,
-         },
-         {
-           duration: 400,
+-      document.documentElement.animate(
+-        {
+-          clipPath: $isDark ? [...clipPath].reverse() : clipPath,
+-        },
+-        {
+-          duration: 400,
 -          easing: $isDark ? 'ease-out' : 'ease-in',
-+          easing: $isDark ? "ease-out" : "ease-in",
-           pseudoElement: $isDark
+-          pseudoElement: $isDark
 -            ? '::view-transition-old(root)'
 -            : '::view-transition-new(root)',
 -        },
 -      )
 -    })
-+            ? "::view-transition-old(root)"
-+            : "::view-transition-new(root)",
-+        }
-+      );
-+    });
++    // const x = evt.clientX;
++    // const y = evt.clientY;
++    // const endRadius = Math.hypot(
++    //   Math.max(x, window.innerWidth - x),
++    //   Math.max(y, window.innerHeight - y)
++    // );
++    // const transition = document.startViewTransition(async () => {
++    //   $isDark = !$isDark;
++    //   await tick();
++    //   addOrRemoveClass();
++    // });
++    // transition.ready.then(() => {
++    //   const clipPath = [
++    //     `circle(0px at ${x}px ${y}px)`,
++    //     `circle(${endRadius}px at ${x}px ${y}px)`,
++    //   ];
++    //   document.documentElement.animate(
++    //     {
++    //       clipPath: $isDark ? [...clipPath].reverse() : clipPath,
++    //     },
++    //     {
++    //       duration: 400,
++    //       easing: $isDark ? "ease-out" : "ease-in",
++    //       pseudoElement: $isDark
++    //         ? "::view-transition-old(root)"
++    //         : "::view-transition-new(root)",
++    //     }
++    //   );
++    // });
    }
    onMount(() => {
 -    $isDark = localStorage.getItem(key) === 'on'
@@ -753,7 +771,7 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..de8eb7fb49704d76f4072d5ac7d6f64f
    }
  </style>
 diff --git a/dist/style.css b/dist/style.css
-index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..e03fcd252e9231967cb0ef3b323a896beefb5d1f 100644
+index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..27482bedc48a4e000dcd45fdb0451283008151c4 100644
 --- a/dist/style.css
 +++ b/dist/style.css
 @@ -2,7 +2,7 @@
@@ -761,15 +779,15 @@ index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..e03fcd252e9231967cb0ef3b323a896b
    --svp-expansion-bg-darker: #f2f2f7;
    --svp-expansion-bg-darker2: #e8e8f2;
 -  --docsearch-primary-color: rgba(251, 113, 133, 1);
-+  --docsearch-primary-color: var(--svp-text-hover);
++  --docsearch-primary-color: rgba(246, 113, 251, 0);
    --svp-code-font: 'Dank Mono', Consolas, 'Courier New', Courier, monospace;
    --docsearch-searchbox-background: transparent;
    --docsearch-logo-color: var(--docsearch-primary-color);
 diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
-index 41367a0c981398e30f2a47bd5d13551acc6704a0..0bb4aa35ff296b1681bce140a060bfb30bc9833d 100644
+index 41367a0c981398e30f2a47bd5d13551acc6704a0..ab217bb49a838c2bf5c3d9a69cce661d04d525bb 100644
 --- a/dist/vite-plugins/create-pre-core-plugins.js
 +++ b/dist/vite-plugins/create-pre-core-plugins.js
-@@ -49,13 +49,16 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
+@@ -49,13 +49,15 @@ import { presetIcons, presetUno, transformerDirectives } from 'unocss';
  import Unocss from 'unocss/vite';
  import { SERVICE_WORKER_PATH } from '../constants.js';
  import { initHighlighter } from '../markdown/highlighter.js';
@@ -783,14 +801,13 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..0bb4aa35ff296b1681bce140a060bfb3
  };
 -var DEFAULT_PRIMARY = '#fb7185';
 -var DEFAULT_HOVER = '#f43f5e';
-+// var DEFAULT_PRIMARY = '#00838f';
-+// var DEFAULT_HOVER = '#00b8c2';
-+var DEFAULT_PRIMARY = '#D8B4FE';
-+var DEFAULT_HOVER = '#818CF8';
++var DEFAULT_PRIMARY = '#7d2fcc';
++var DEFAULT_HOVER = '#c285ff';
++
  function getIconSafelist(themeOptions) {
      var icons = themeOptions === null || themeOptions === void 0 ? void 0 : themeOptions.preBuildIconifyIcons;
      if (!icons)
-@@ -92,6 +95,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+@@ -92,6 +94,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
                          presets: [
                              presetUno(),
                              presetIcons(),
@@ -798,7 +815,7 @@ index 41367a0c981398e30f2a47bd5d13551acc6704a0..0bb4aa35ff296b1681bce140a060bfb3
                          ],
                          transformers: [transformerDirectives()],
                          theme: {
-@@ -109,7 +113,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
+@@ -109,7 +112,7 @@ export default (function (options) { return __awaiter(void 0, void 0, void 0, fu
                          shortcuts: {
                              'svp-gradient-bg': "bg-gradient-linear bg-gradient-[45deg,".concat(gradient.start, ",").concat(gradient.end, "]"),
                              'svp-gradient-text': 'svp-gradient-bg bg-clip-text text-transparent',
