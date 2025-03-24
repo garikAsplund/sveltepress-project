@@ -275,7 +275,7 @@
           </div>
           <div class="flex justify-between items-center text-sm">
             <span class="text-gray-300">Density:</span>
-            <span class="text-green-400">Highest</span>
+            <span class="text-green-400">High</span>
           </div>
         </div>
       </div>

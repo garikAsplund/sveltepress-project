@@ -1,17 +1,47 @@
 <!-- CommunitySection.svelte -->
-<script>
+<script lang="ts">
   import Slack from "$lib/svgs/Slack.svelte";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
+  import LetterPullUp from "./UI/LetterPullUp.svelte";
 
-  // State for calendar integration
-  let nextMeetingDate = "";
-  let localTime = "";
+  let titleElement: HTMLDivElement;
+  let titleVisible = $state(false);
 
-  // Calculate next meeting date (every other Wednesday at 09:00 PST/PDT)
   onMount(() => {
     calculateNextMeeting();
+
+    const options = {
+      root: null, // Use viewport as root
+      rootMargin: "0px",
+      threshold: 0.8, // Trigger when at least 10% is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          titleVisible = true;
+          // Optionally unobserve after it becomes visible
+          // observer.unobserve(entry.target);
+        } else {
+          // If you want the animation to happen every time it enters the viewport
+          // titleVisible = false;
+        }
+      });
+    }, options);
+
+    if (titleElement) {
+      observer.observe(titleElement);
+    }
+
+    return () => {
+      if (titleElement) observer.unobserve(titleElement);
+    };
   });
+
+  // State for calendar integration
+  let nextMeetingDate = $state("");
+  let localTime = $state("");
 
   function calculateNextMeeting() {
     const now = new Date();
@@ -51,9 +81,15 @@
 </script>
 
 <section class="py-12 bg-[#080c1a] pb-24" id="community">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-    <div class="text-center mb-12">
-      <h2 class="font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"      >Join our community</h2>
+  <div
+    class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
+  >
+    <div class="text-center mb-12" bind:this={titleElement}>
+      {#if titleVisible}
+        <LetterPullUp words="Join our community" />
+      {:else}
+        <LetterPullUp words="Join our community" class="invisible" />
+      {/if}
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">
@@ -149,7 +185,7 @@
         class="max-w-md bg-[#0c1124] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#a3a7ff]/20 hover:-translate-y-1 border border-[#1d2138] flex flex-col"
         transition:fade
       >
-        <div class="bg-[#1d2138]  px-4 py-0">
+        <div class="bg-[#1d2138] px-4 py-0">
           <h3 class="text-xl font-semibold text-gray-300">Contributing</h3>
         </div>
         <div class="p-6 flex-grow flex flex-col">
@@ -228,7 +264,7 @@
         class="max-w-md bg-[#0a0f1d] rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-[#9ba7ff]/20 hover:-translate-y-1 border border-[#1a2038] flex flex-col"
         transition:fade
       >
-        <div class="bg-[#1a2038]  px-4 py-0">
+        <div class="bg-[#1a2038] px-4 py-0">
           <h3 class="text-xl font-semibold text-gray-300">Chat & Connect</h3>
         </div>
         <div class="p-6 flex-grow flex flex-col">
