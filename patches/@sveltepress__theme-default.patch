@@ -789,10 +789,10 @@ index 08c79e05a94a302d2cfba6b083ed6ab4be0962ea..6e9b47805dc50eaa3471a42cdf644ff0
    }
  </style>
 diff --git a/dist/style.css b/dist/style.css
-index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..27482bedc48a4e000dcd45fdb0451283008151c4 100644
+index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..1244a577852308642d9e0b5c5e62c1abd5070be5 100644
 --- a/dist/style.css
 +++ b/dist/style.css
-@@ -2,7 +2,7 @@
+@@ -2,11 +2,13 @@
    --svp-expansion-bg: #f8f8fb;
    --svp-expansion-bg-darker: #f2f2f7;
    --svp-expansion-bg-darker2: #e8e8f2;
@@ -801,6 +801,20 @@ index 41ffdb14008c4ff61160a15eca8a5dddac1cc6b5..27482bedc48a4e000dcd45fdb0451283
    --svp-code-font: 'Dank Mono', Consolas, 'Courier New', Courier, monospace;
    --docsearch-searchbox-background: transparent;
    --docsearch-logo-color: var(--docsearch-primary-color);
+   --docsearch-searchbox-shadow: inset 0px 0px 0px 1px var(--docsearch-primary-color);
++  --docsearch-hit-active-color: #282c34;
++  --docsearch-highlight-color: #e53232;
+ }
+ 
+ html.dark,
+@@ -22,6 +24,7 @@ html[data-theme='dark'] {
+   --docsearch-footer-background: #1e1e20;
+   --docsearch-hit-background: #313136;
+   --docsearch-hit-color: var(--svp-text);
++  --docsearch-hit-active-color: var(--svp-text);
+   --twoslash-popup-bg: var(--svp-expansion-bg);
+ }
+ 
 diff --git a/dist/vite-plugins/create-pre-core-plugins.js b/dist/vite-plugins/create-pre-core-plugins.js
 index 41367a0c981398e30f2a47bd5d13551acc6704a0..ab217bb49a838c2bf5c3d9a69cce661d04d525bb 100644
 --- a/dist/vite-plugins/create-pre-core-plugins.js

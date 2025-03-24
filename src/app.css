@@ -3,6 +3,13 @@
   scroll-margin-top: 80px; /* Adjust this value to match your header height */
 }
 
+:root {
+--docsearch-highlight-color: #c285ff;
+}
+html[data-theme='dark'] {
+  --docsearch-hit-active-color: black;
+}
+
 :not(pre) > code {
   white-space: nowrap;
 }
