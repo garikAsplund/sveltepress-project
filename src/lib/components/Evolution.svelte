@@ -150,7 +150,7 @@
 </script>
 
 <section class="w-full flex flex-col items-center">
-  <div bind:this={titleContainer} class="flex justify-center scale-75">
+  <div bind:this={titleContainer} class="flex justify-center">
     {#if showTitle}
       <WordsFadeIn words="Evolution of serverless architecture" delay={0.4} />
     {/if}
@@ -166,7 +166,7 @@
         style={getCardStyle(0)}
       >
         <div
-          class="text-emerald-400/80 w-32 h-32 flex items-center justify-center"
+          class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center"
         >
           <Vm />
         </div>
@@ -180,13 +180,13 @@
       >
         <!-- Desktop arrow (right) -->
         <div
-          class="hidden md:flex text-emerald-400 w-full justify-center items-center"
+          class="hidden md:flex text-[#4ac6b3] w-full justify-center items-center opacity-85"
         >
           <ArrowRight size={64} />
         </div>
         <!-- Mobile arrow (down) -->
         <div
-          class="md:hidden text-emerald-400 h-12 flex flex-col justify-center items-center"
+          class="md:hidden text-[#4ac6b3] h-12 flex flex-col justify-center items-center"
         >
           <ArrowDown size={64} />
         </div>
@@ -198,7 +198,7 @@
         style={getCardStyle(1)}
       >
         <div
-          class="text-emerald-400/80 w-32 h-32 flex items-center justify-center"
+          class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center"
         >
           <Container />
         </div>
@@ -212,13 +212,13 @@
       >
         <!-- Desktop arrow (right) -->
         <div
-          class="hidden md:flex text-emerald-400 w-full justify-center items-center"
+          class="hidden md:flex text-[#4ac6b3] w-full justify-center items-center opacity-85"
         >
           <ArrowRight size={64} />
         </div>
         <!-- Mobile arrow (down) -->
         <div
-          class="md:hidden text-emerald-400 h-12 flex flex-col justify-center items-center"
+          class="md:hidden text-[#4ac6b3] h-12 flex flex-col justify-center items-center"
         >
           <ArrowDown size={64} />
         </div>
@@ -230,7 +230,7 @@
         style={getCardStyle(2)}
       >
         <div
-          class="text-emerald-400/80 w-32 h-32 flex-col flex items-center justify-center scale-15"
+          class="text-[#4ac6b3] w-32 h-32 flex-col flex items-center justify-center scale-15"
         >
           <div class="flex">
             <Sandbox /><Sandbox /><Sandbox />

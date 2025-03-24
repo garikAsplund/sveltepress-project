@@ -14,11 +14,11 @@
   <div
     class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-none"
   >
-    <p
-      class="z-10 whitespace-pre-wrap text-center text-4xl font-medium text-black dark:text-white"
+    <h2
+      class=       "font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"
     >
       Serverless functions with speed <i>and</i> security
-    </p>
+    </h2>
     <DotPattern
       class="[mask-image:linear-gradient(white,transparent)] opacity-80"
       width="4"

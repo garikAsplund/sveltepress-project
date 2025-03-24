@@ -11,11 +11,11 @@
   class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden"
   style="background: linear-gradient(to bottom, #080c1a 0%, #080c1a 20%, #000000 80%, #000000 100%);"
 >
-<h1
+<h2
       class=
         "font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"
     >Our contributors
-    </h1>
+    </h2>
   <!-- Main content -->
   <div class="w-full relative py-16">
     <!-- First row marquee -->

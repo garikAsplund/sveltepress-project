@@ -28,14 +28,14 @@
     variants={combinedVariants}
     let:motion
   >
-    <h1
+    <h2
       class={cn(
         className,
-        "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
+        "font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"
       )}
       use:motion
     >
       {word}
-    </h1>
+    </h2>
   </Motion>
   

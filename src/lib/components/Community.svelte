@@ -53,7 +53,7 @@
 <section class="py-12 bg-[#080c1a] pb-24" id="community">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-300 mb-4">Join our community</h2>
+      <h2 class="font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"      >Join our community</h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8">

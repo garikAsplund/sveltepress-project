@@ -27,7 +27,8 @@
 </script>
 
 <div class="container mx-auto px-4 py-8 w-full max-w-[100vw] sm:max-w-5xl box-border overflow-x-clip">
-  <h2 class="text-3xl font-bold text-center mb-8">
+  <h2 class=        "font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"
+  >
     Why you'll love Hyperlight
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
