@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@sveltepress/theme-default':
-    hash: mpw5fgnuyonjglzbiaw7yuywjy
+    hash: 6r744gh4aibjyyumewa5k36omq
     path: patches/@sveltepress__theme-default.patch
 
 importers:
@@ -61,7 +61,7 @@ importers:
         version: 4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0))
       '@sveltepress/theme-default':
         specifier: ^6.0.0
-        version: 6.0.0(patch_hash=mpw5fgnuyonjglzbiaw7yuywjy)(nko26t7adkgqa6cm2smvsx6gxa)
+        version: 6.0.0(patch_hash=6r744gh4aibjyyumewa5k36omq)(nko26t7adkgqa6cm2smvsx6gxa)
       '@sveltepress/vite':
         specifier: ^1.2.0
         version: 1.2.0(@sveltejs/kit@2.20.1(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0)))(rollup@2.79.2)(svelte@5.23.2)(vite@5.4.14(@types/node@20.17.24)(lightningcss@1.29.2)(terser@5.39.0))
@@ -5352,7 +5352,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltepress/theme-default@6.0.0(patch_hash=mpw5fgnuyonjglzbiaw7yuywjy)(nko26t7adkgqa6cm2smvsx6gxa)':
+  '@sveltepress/theme-default@6.0.0(patch_hash=6r744gh4aibjyyumewa5k36omq)(nko26t7adkgqa6cm2smvsx6gxa)':
     dependencies:
       '@docsearch/css': 3.9.0
       '@docsearch/js': 3.9.0(@algolia/client-search@5.21.0)(@types/react@18.3.19)(search-insights@2.17.3)

@@ -313,6 +313,24 @@ index 14ec375c1fbf2cf2794f2b0e0e1926c683842f06..863de42334e4ec75069d8b82f023279f
    }
    .right .title {
      --at-apply: 'justify-end';
+diff --git a/dist/components/Search.svelte b/dist/components/Search.svelte
+index 9b3da12653be839194245b2a18d549fd7ecf294f..1b0382eb547b70e719b81d96e8d636738b66fdbb 100644
+--- a/dist/components/Search.svelte
++++ b/dist/components/Search.svelte
+@@ -16,3 +16,13 @@
+ </script>
+ 
+ <div id="docsearch"></div>
++
++<style>
++   :global(.DocSearch-Logo) {
++    filter: grayscale(100%);
++  }
++  
++  :global(.DocSearch-Logo svg) {
++    filter: brightness(2);
++  }
++</style>
 diff --git a/dist/components/Sidebar.svelte b/dist/components/Sidebar.svelte
 index c1c34b9c2e54e637536dd8d0bd42ed4dcb8de6b6..ba4d8bdfaf26f541938cebcf9f2144d66848a7d1 100644
 --- a/dist/components/Sidebar.svelte

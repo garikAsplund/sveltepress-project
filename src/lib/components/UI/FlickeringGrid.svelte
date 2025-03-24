@@ -91,9 +91,9 @@
     let animationFrameId;
   
     onMount(() => {
-      console.log("canvas", canvas);
+      // console.log("canvas", canvas);
       if (canvas) {
-        console.log("canvas", canvas);
+        // console.log("canvas", canvas);
       }
       if (!canvas) {
         return;
@@ -103,7 +103,7 @@
         return;
       }
       let { canvasWidth, canvasHeight, cols, rows, squares, dpr } = setupCanvas();
-      console.log(ctx, "ctx");
+      // console.log(ctx, "ctx");
   
       let lastTime = 0;
   
@@ -131,7 +131,7 @@
   
       const observer = new IntersectionObserver(
         ([entry]) => {
-          console.log(entry.isIntersecting);
+          // console.log(entry.isIntersecting);
           isInView.set(entry.isIntersecting);
         },
         { threshold: 0 }
