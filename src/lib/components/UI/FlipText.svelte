@@ -28,7 +28,7 @@
         }}
         let:motion
       >
-        <span use:motion class={cn("origin-center drop-shadow-sm", className)}>
+        <span use:motion class={cn("origin-center drop-shadow-sm", className)} class:font-italic={letter === 'and'}>
           {letter}
         </span>
       </Motion>

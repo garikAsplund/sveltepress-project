@@ -41,10 +41,10 @@
     // Get viewport height to adjust rootMargins dynamically
     const viewportHeight = window.innerHeight;
     // Calculate base spacing - smaller on mobile, larger on desktop
-    const baseSpacing = Math.min(viewportHeight * 0.10, 150); // 15% of viewport height, max 150px
-    
+    const baseSpacing = Math.min(viewportHeight * 0.1, 150); // 15% of viewport height, max 150px
+
     // Create separate observers with different rootMargins
-    
+
     // Observer for title
     const titleObserver = new IntersectionObserver(
       (entries) => {
@@ -55,7 +55,7 @@
       },
       { rootMargin: `0px 0px -${baseSpacing}px 0px` }
     );
-    
+
     // Observer for first card
     const card0Observer = new IntersectionObserver(
       (entries) => {
@@ -67,7 +67,7 @@
       },
       { rootMargin: `0px 0px -${baseSpacing * 2}px 0px` }
     );
-    
+
     // Observer for first arrow
     const arrow0Observer = new IntersectionObserver(
       (entries) => {
@@ -78,7 +78,7 @@
       },
       { rootMargin: `0px 0px -${baseSpacing * 3}px 0px` }
     );
-    
+
     // Observer for second card
     const card1Observer = new IntersectionObserver(
       (entries) => {
@@ -90,7 +90,7 @@
       },
       { rootMargin: `0px 0px -${baseSpacing * 4}px 0px` }
     );
-    
+
     // Observer for second arrow
     const arrow1Observer = new IntersectionObserver(
       (entries) => {
@@ -101,7 +101,7 @@
       },
       { rootMargin: `0px 0px -${baseSpacing * 5}px 0px` }
     );
-    
+
     // Observer for third card
     const card2Observer = new IntersectionObserver(
       (entries) => {
@@ -125,7 +125,7 @@
       arrow1Observer.observe(titleContainer);
       card2Observer.observe(titleContainer);
     }
-    
+
     return () => {
       titleObserver.disconnect();
       card0Observer.disconnect();
@@ -157,22 +157,32 @@
   </div>
   <div class="max-w-7xl">
     <!-- Modified grid with arrows -->
-    <div
-      class="grid grid-cols-1 md:grid-cols-5 gap-2 p-4"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-2 p-4">
       <!-- First card -->
       <div
         class="bg-slate-800 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-700 md:col-span-1"
         style={getCardStyle(0)}
       >
-        <div
-          class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center"
-        >
+        <div class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center">
           <Vm />
         </div>
         <h3 class="text-white mt-4 text-xl font-medium">{cards[0].title}</h3>
+        <!-- Added comparison metrics -->
+        <div class="mt-4 space-y-1 w-full">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Boot Time:</span>
+            <span class="text-red-400">Minutes</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Security:</span>
+            <span class="text-yellow-400">Medium+</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Density:</span>
+            <span class="text-red-400">Low</span>
+          </div>
+        </div>
       </div>
-
       <!-- First arrow -->
       <div
         class="flex items-center justify-center transition-all duration-700 p-2"
@@ -191,20 +201,31 @@
           <ArrowDown size={64} />
         </div>
       </div>
-
       <!-- Second card -->
       <div
         class="bg-slate-800 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-700 md:col-span-1"
         style={getCardStyle(1)}
       >
-        <div
-          class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center"
-        >
+        <div class="text-[#4ac6b3] w-32 h-32 flex items-center justify-center">
           <Container />
         </div>
         <h3 class="text-white mt-4 text-xl font-medium">{cards[1].title}</h3>
+        <!-- Improved attributes section -->
+        <div class="mt-4 space-y-1 w-full">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Boot Time:</span>
+            <span class="text-yellow-400">Seconds</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Security:</span>
+            <span class="text-yellow-400">Medium-</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Density:</span>
+            <span class="text-yellow-400">Medium+</span>
+          </div>
+        </div>
       </div>
-
       <!-- Second arrow -->
       <div
         class="flex items-center justify-center transition-all duration-700 p-2"
@@ -223,7 +244,6 @@
           <ArrowDown size={64} />
         </div>
       </div>
-
       <!-- Third card -->
       <div
         class="bg-slate-800 rounded-lg shadow-lg p-6 flex flex-col items-center transition-all duration-700 md:col-span-1"
@@ -238,11 +258,26 @@
           <div class="flex">
             <Sandbox /><Sandbox /><Sandbox />
           </div>
-          <div class="flex">`
+          <div class="flex">
             <Sandbox /><Sandbox /><Sandbox />
           </div>
         </div>
         <h3 class="text-white mt-4 text-xl font-medium">{cards[2].title}</h3>
+        <!-- Added comparison metrics -->
+        <div class="mt-4 space-y-1 w-full">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Boot Time:</span>
+            <span class="text-green-400">Millisecs</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Security:</span>
+            <span class="text-green-400">High</span>
+          </div>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-300">Density:</span>
+            <span class="text-green-400">Highest</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
