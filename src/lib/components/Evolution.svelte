@@ -267,7 +267,7 @@
         <div class="mt-4 space-y-1 w-full">
           <div class="flex justify-between items-center text-sm">
             <span class="text-gray-300">Boot Time:</span>
-            <span class="text-green-400">Millisecs</span>
+            <span class="text-green-400">Microsecs</span>
           </div>
           <div class="flex justify-between items-center text-sm">
             <span class="text-gray-300">Security:</span>
