@@ -28,11 +28,15 @@
       <!-- LEFT COLUMN: Video embed -->
       <div>
         <div class=" rounded-lg overflow-hidden shadow-2xl">
-          <lite-youtube
+          <!-- <lite-youtube
             videoid="f8ornY7h2KE"
             playlabel="Hyperlight Demo at KubeCon 2024"
             style="background-image: url('/Talk.png');"
             params="start=289"
+          ></lite-youtube> -->
+          <lite-youtube
+            videoid="EYCA0cR1dkI"
+            playlabel="Hyperlight and Edge Actions - Inside Azure Innovations with Microsoft Azure's CTO Mark Russinovich at Microsoft Ignite 2024 "
           ></lite-youtube>
         </div>
       </div>
@@ -40,10 +44,12 @@
       <!-- RIGHT COLUMN: Text content (no background) -->
       <div class="rounded-lg p-8">
         <h3 class="text-3xl font-bold text-white mb-2">
-          KubeCon North America 2024
+          <!-- KubeCon North America 2024 -->
+          Hyperlight and Edge Actions 
         </h3>
         <h4 class="text-xl text-blue-300 mb-6">
-          Microsoft's Rita Zhang introduces Hyperlight
+          Azure's CTO Mark Russinovich at Microsoft Ignite 2024
+          <!-- Rita Zhang introduces Hyperlight -->
         </h4>
 
         <ul class="space-y-4 text-base">
