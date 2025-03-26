@@ -121,6 +121,10 @@ export default {
   ],
   "/blog": [
     {
+      title: "Hyperlight Wasm: Fast, secure, and OS-free",
+      to: "/blog/hyperlight-wasm/",
+    },
+    {
       title: "Build a Hyperlight C guest to securely execute JavaScript",
       to: "/blog/runJS/",
     },
