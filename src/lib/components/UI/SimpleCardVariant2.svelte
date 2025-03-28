@@ -9,7 +9,7 @@
   </script>
   
   <CardContainer2>
-    <div class="p-4 w-full flex justify-center items-center">
+    <div class="md:p-4 w-full flex justify-center items-center">
       <div class={cn("text-left", className)}>
         <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-gray-100">
           {title}

@@ -12,7 +12,7 @@
   <Line
     class="w-px bg-gradient-to-t left-2 sm:left-4 md:left-6 h-full inset-y-0"
   />
-  <div class="relative z-20 mx-auto py-8 px-4 break-words">
+  <div class="relative z-20 mx-auto py-4 md:py-8 px-4 break-words">
     <slot></slot>
   </div>
 </div>

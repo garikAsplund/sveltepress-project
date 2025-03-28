@@ -85,7 +85,7 @@
           </p>
 
           <p class="mb-8 text-lg sm:text-xl text-slate-300">
-            Hyperlight is an open source micro-Virtual Machine Manager for
+            Hyperlight is an open source micro-virtual machine manager for
             executing untrusted code quickly and safely at scale.
           </p>
 

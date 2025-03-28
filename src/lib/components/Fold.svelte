@@ -31,7 +31,7 @@
   >
     Why you'll love Hyperlight
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 w-full">
     {#each features as feature}
       <SimpleCardVariant2
         title={feature.title}

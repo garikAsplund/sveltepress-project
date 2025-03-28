@@ -4,7 +4,6 @@
 
 *By Yosh Wuyts, Senior Developer Advocate and Lucy Menon, Software engineer and researcher, Microsoft*
 
-
 Last fall the Azure Core Upstream team [introduced Hyperlight](https://aka.ms/hyperlight-announcement): an open-source Rust library you can use to execute small, embedded functions using hypervisor-based protection. Then, we showed how to run [Rust functions really, really fast](https://aka.ms/hl-kubecon-demo-post), followed by using [C to run Javascript](https://aka.ms/hyperlight-javascript). In February 2025, the Cloud Native Computing Foundation (CNCF) voted to onboard Hyperlight into their Sandbox program.
 
 We're announcing the release of Hyperlight Wasm: a Hyperlight virtual machine (VM) "micro-guest" that can run wasm component workloads written in many programming languages. If you'd like to dive straight in, you can visit the [hyperlight-wasm repo](https://github.com/hyperlight-dev/hyperlight-wasm) on GitHub. In the remainder of this post we'll cover the basics of how Hyperlight Wasm works and then walk through how to build a Rust example step-by-step.
@@ -43,11 +42,11 @@ The big magic trick we're performing by combining Hyperlight with WebAssembly is
 
 With Hyperlight and Hyperlight Wasm we end up doing far less than traditional VMs. When the Hyperlight VMM creates a new VM, all it needs do to is create a new slice of memory and load the VM guest, which in turn loads the wasm workload. This takes about 1-2 milliseconds today, and work is happening to bring that number to be less than 1 millisecond in the future.
 
-![Diagram showing that hyperlight removes three layers of heavy work for each instance of an application compared to the traditional microservices approach.](https://opensource.microsoft.com/blog/wp-content/uploads/2025/03/image-5.webp)
+![Diagram showing that Hyperlight removes three layers of heavy work for each instance of an application compared to the traditional microservices approach.](https://opensource.microsoft.com/blog/wp-content/uploads/2025/03/image-5.webp)
 
 Not only is this architecture good for start times, fast start times also affect the way you can schedule your applications. If starting a workload takes about a millisecond, you can afford not to have any idling instances. If you do choose to have a warm pool ready, the memory footprint is drastically smaller. It also allows you to do more work on cheaper hardware, located closer to users. That's the logic behind our upcoming Azure Front DoorEdge Actions service, powered by Hyperlight and soon to be in private preview.
 
-Combining Hyperlight with wasm is not just good for performance either; it is also good for security. Under the covers, the Hyperlight Wasm guest uses the best-in-class wasmtime runtime, compiled into a Hyperlight guest as a Rust no_std module. Wasmtime provides strong isolation boundaries for wasm workloads via a software-defined runtime sandbox. While potential attackers will have a bad time breaking out of wasm's sandbox, on the Hyperlight Wasm guest, even if they could manage to, they would be facing the challenge of then also escaping the VM. One layer of sandboxing is good. But having two layers is even better.
+Combining Hyperlight with wasm is not just good for performance either; it is also good for security. Under the covers, the Hyperlight Wasm guest uses the best-in-class Wasmtime runtime, compiled into a Hyperlight guest as a Rust no_std module. Wasmtime provides strong isolation boundaries for wasm workloads via a software-defined runtime sandbox. While potential attackers will have a bad time breaking out of wasm's sandbox, on the Hyperlight Wasm guest, even if they could manage to, they would be facing the challenge of then also escaping the VM. One layer of sandboxing is good. But having two layers is even better.
 
 ## UDP echo example
 
