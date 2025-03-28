@@ -48,9 +48,9 @@
   </div>
 
   <div
-    class="relative flex h-48 w-full items-center justify-center overflow-hidden bg-none"
+    class="relative flex h-36 md:h-48 w-full items-end md:items-center justify-center overflow-hidden bg-none"
   >
-    <h2 bind:this={titleElement} class="pb-16">
+    <h2 bind:this={titleElement} class="md:pb-16">
       {#if titleVisible}
         <FlipText
           class="font-display text-center text-2xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-4xl md:leading-[5rem]"
